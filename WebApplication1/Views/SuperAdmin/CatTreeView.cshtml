@@ -1,0 +1,75 @@
+﻿
+@*@{
+    ViewBag.Title = "CatTreeView";
+}
+
+   
+<div ng-app="myApp">
+    <div data-angular-treeview="true"
+         data-tree-id="abc"
+         data-tree-model="treedata"
+         data-node-id="id"
+         data-node-label="label"
+         data-node-children="children">
+    </div>
+    </div>
+    <script>
+        angular.module('myApp', ['angularTreeview']);
+        $scope.treedata =
+[
+	{
+	    "label": "User", "id": "role1", "children": [
+          { "label": "subUser1", "id": "role11", "children": [] },
+          {
+              "label": "subUser2", "id": "role12", "children": [
+                {
+                    "label": "subUser2-1", "id": "role121", "children": [
+                      { "label": "subUser2-1-1", "id": "role1211", "children": [] },
+                      { "label": "subUser2-1-2", "id": "role1212", "children": [] }
+                    ]
+                }
+              ]
+          }
+	    ]
+	},
+	{ "label": "Admin", "id": "role2", "children": [] },
+	{ "label": "Guest", "id": "role3", "children": [] }
+];
+        $scope.$watch('abc.currentNode', function (newObj, oldObj) {
+            if ($scope.abc && angular.isObject($scope.abc.currentNode)) {
+                console.log('Node Selected!!');
+                console.log($scope.abc.currentNode);
+            }
+        }, false);
+
+    </script>*@
+
+@{
+    ViewBag.Title = "TempUsers";
+}
+
+<body ng-app="ApplicationModule">
+    <div>
+        <div>
+            <div>
+                <table>
+                    <tr>
+                        <td><a href="showUser"> Show User </a></td>
+                        <td><a href="addUser"> Add User </a></td>
+                    </tr>
+                </table>
+            </div>
+            <div>
+                <div ng-view></div>
+            </div>
+        </div>
+    </div>
+
+</body>
+<script src="~/Content/AngulaJS/Module.js"></script>
+<script src="~/Content/AngulaJS/Services.js"></script>
+<script src="~/Content/AngulaJS/AddUseController.js"></script>
+
+<script src="~/Content/AngulaJS/DeleteUserController.js"></script>
+<script src="~/Content/AngulaJS/EditUserController.js"></script>
+<script src="~/Content/AngulaJS/ShowUsersController.js"></script>

@@ -1,0 +1,153 @@
+﻿@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<div class="zone-content equalize zone clearfix">
+
+    <div class="project-header-container container-16">
+
+        <div class="pricing block">
+            <div class="block-title">
+                <h1>Our prices</h1>
+            </div>
+            <div class="pricing-table clearfix">
+                <div class="pricing-column">
+                    <div class="pricing-header">Bronze</div>
+                    <div class="pricing-cost"><span class="text-colorful">$15</span>/mo</div>
+                    <div class="pricing-cell">3 Images</div>
+                    <div class="pricing-cell">Standard Positioning</div>
+                    <div class="pricing-cell">1 Lorem Ipsum</div>
+                    <div class="pricing-cell">2 Adipiscing Elit</div>
+                </div>
+                <div class="pricing-column">
+                    <div class="pricing-header">Silver</div>
+                    <div class="pricing-cost"><span class="text-colorful">$25</span>/mo</div>
+                    <div class="pricing-cell">6 Images</div>
+                    <div class="pricing-cell">Extended Positioning</div>
+                    <div class="pricing-cell">3 Lorem Ipsum</div>
+                    <div class="pricing-cell">5 Adipiscing Elit</div>
+                </div>
+                <div class="pricing-column">
+                    <div class="pricing-header">Gold</div>
+                    <div class="pricing-cost"><span class="text-colorful">$35</span>/mo</div>
+                    <div class="pricing-cell">9 Images</div>
+                    <div class="pricing-cell">Extra Positioning</div>
+                    <div class="pricing-cell">5 Lorem Ipsum</div>
+                    <div class="pricing-cell">7 Adipiscing Elit</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="our-directory block">
+            <div class="block-title">
+                <h1>Register Now!</h1>
+            </div>
+            <form class="subscription-table">
+                <div id="subscription-options">
+                    <div class="subscription-column">
+                        <div class="subscription-header">Step 1: <span class="text-colorful">Identify</span></div>
+                        <div class="subscription-body">
+                            You are a: <br />
+                            <div class="radio-buttons">
+                                <input type="radio" name="subscriber" value="advertiser" />Advertiser<br />
+                                <input type="radio" name="subscriber" value="local-business" />Local Business<br />
+                                <input type="radio" name="subscriber" value="global-business" />Global Business<br />
+                                <input type="radio" name="subscriber" value="other" />Other<br />
+                            </div>
+                        </div>
+                    </div>
+                    <div class="subscription-column">
+                        <div class="subscription-header">Step 2: <span class="text-colorful">Register</span></div>
+                        <div class="subscription-body">
+                            Login details: <br />
+                            <input type="text" class="text-input-grey" placeholder="Email" /><br />
+                            <input type="text" class="text-input-grey" placeholder="Password" /><br />
+                            <input type="text" class="text-input-grey" placeholder="Repeat Password" />
+                        </div>
+                    </div>
+                    <div class="subscription-column">
+                        <div class="subscription-header">Step 3: <span class="text-colorful">Subscribe</span></div>
+                        <div class="subscription-body">
+                            Choose Package: <br />
+                            <div class="radio-buttons">
+                                <input type="radio" name="subscription" value="silver" />Silver ($15/mo)<br />
+                                <input type="radio" name="subscription" value="gold" />Gold ($25/mo)<br />
+                                <input type="radio" name="subscription" value="platinum" />Platinum ($35/mo)
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="subscription-footer">
+                    <div class="subscription-background">
+                        <div class="subscription-button-wrapper">
+                            <input type="submit" class="button-colorful" value="SUBSCRIBE" name="subscribe" />
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>
+
+    </div><!-- end of .project-header-container -->
+
+    <div class="sidebar-container container-8">
+
+        <div class="recently-added block">
+            <div class="block-title">
+                <h3>Recently Added</h3>
+            </div>
+            <ul class="entries-list">
+                <li class="clearfix">
+                    <a href="#" class="thumbnail">
+                        <img src="~/images//content/sky.png" alt="" />
+                    </a>
+                    <a href="#" class="entry-title">Company Name</a>
+                    <div class="entry-excerpt">Lorem ipsum dolor sit amet, consectetur adipisicing elit.</div>
+                </li>
+                <li class="clearfix">
+                    <a href="#" class="thumbnail">
+                        <img src="~/images//content/text.png" alt="" />
+                    </a>
+                    <a href="#" class="entry-title">Another Company</a>
+                    <div class="entry-excerpt">Lorem ipsum dolor sit amet, consectetur adipisicing elit.</div>
+                </li>
+            </ul>
+            <div class="two-images-banner clearfix">
+                <a href="#">
+                    <img src="~/images//content/crayons.png" alt="" />
+                </a>
+                <a href="#">
+                    <img src="~/images//content/coins.png" alt="" />
+                </a>
+            </div>
+        </div>
+
+        <div class="latest-news block">
+            <div class="block-title">
+                <h3>Latest News</h3>
+            </div>
+            <ul class="entries-list">
+                <li class="clearfix">
+                    <a href="#" class="thumbnail">
+                        <img src="~/images//content/coins.png" alt="" />
+                    </a>
+                    <a href="#" class="entry-title">Lorem Ipsum</a>
+                    <div class="entry-excerpt">Lorem ipsum dolor sit amet, consectetur adipisicing elit.</div>
+                </li>
+                <li class="clearfix">
+                    <a href="#" class="thumbnail">
+                        <img src="~/images//content/crayons.png" alt="" />
+                    </a>
+                    <a href="#" class="entry-title">Dolor Sit Amet</a>
+                    <div class="entry-excerpt">Lorem ipsum dolor sit amet, consectetur adipisicing elit.</div>
+                </li>
+            </ul>
+            <div class="one-image-banner">
+                <a href="#">
+                    <img src="~/images//content/handshake.png" alt="" />
+                </a>
+            </div>
+        </div>
+
+    </div><!-- end of .sidebar-container -->
+
+</div><!-- end of .zone-content -->
+

@@ -1,0 +1,149 @@
+﻿@model Data.Models.Company
+
+@{
+    ViewBag.Title = "Edit";
+}
+
+<h2>Edit</h2>
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+    
+    <div class="form-horizontal">
+        <h4>Company</h4>
+        <hr />
+        @Html.ValidationSummary(true)
+        @Html.HiddenFor(model => model.CompanyId)
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.CompanyName, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.CompanyName)
+                @Html.ValidationMessageFor(model => model.CompanyName)
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.CompanyWebsite, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.CompanyWebsite)
+                @Html.ValidationMessageFor(model => model.CompanyWebsite)
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.CompanyEmail1, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.CompanyEmail1)
+                @Html.ValidationMessageFor(model => model.CompanyEmail1)
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.CompanyEmail2, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.CompanyEmail2)
+                @Html.ValidationMessageFor(model => model.CompanyEmail2)
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.CompanyTelephone, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.CompanyTelephone)
+                @Html.ValidationMessageFor(model => model.CompanyTelephone)
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.CompanyTypeId, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.CompanyTypeId)
+                @Html.ValidationMessageFor(model => model.CompanyTypeId)
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.UserOwnerId, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.UserOwnerId)
+                @Html.ValidationMessageFor(model => model.UserOwnerId)
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.UserCreatorId, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.UserCreatorId)
+                @Html.ValidationMessageFor(model => model.UserCreatorId)
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.CompanyLogoPath, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.CompanyLogoPath)
+                @Html.ValidationMessageFor(model => model.CompanyLogoPath)
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.CreationDate, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.CreationDate)
+                @Html.ValidationMessageFor(model => model.CreationDate)
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.LastUpdateDate, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.LastUpdateDate)
+                @Html.ValidationMessageFor(model => model.LastUpdateDate)
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.CompanyFoundedDate, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.CompanyFoundedDate)
+                @Html.ValidationMessageFor(model => model.CompanyFoundedDate)
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.turnover, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.turnover)
+                @Html.ValidationMessageFor(model => model.turnover)
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.numberOfEmployees, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.numberOfEmployees)
+                @Html.ValidationMessageFor(model => model.numberOfEmployees)
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.companydescription, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.companydescription)
+                @Html.ValidationMessageFor(model => model.companydescription)
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Save" class="btn btn-default" />
+            </div>
+        </div>
+    </div>
+}
+
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>

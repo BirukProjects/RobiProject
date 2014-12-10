@@ -1,0 +1,10 @@
+C:\Users\USER\Source\Workspaces\Workspace\WebDirectory\Data\bin\Release\Data.dll.config
+C:\Users\USER\Source\Workspaces\Workspace\WebDirectory\Data\bin\Release\Data.dll
+C:\Users\USER\Source\Workspaces\Workspace\WebDirectory\Data\bin\Release\Data.pdb
+C:\Users\USER\Source\Workspaces\Workspace\WebDirectory\Data\bin\Release\EntityFramework.dll
+C:\Users\USER\Source\Workspaces\Workspace\WebDirectory\Data\bin\Release\EntityFramework.SqlServer.dll
+C:\Users\USER\Source\Workspaces\Workspace\WebDirectory\Data\bin\Release\EntityFramework.xml
+C:\Users\USER\Source\Workspaces\Workspace\WebDirectory\Data\bin\Release\EntityFramework.SqlServer.xml
+C:\Users\USER\Source\Workspaces\Workspace\WebDirectory\Data\obj\Release\Data.csprojResolveAssemblyReference.cache
+C:\Users\USER\Source\Workspaces\Workspace\WebDirectory\Data\obj\Release\Data.dll
+C:\Users\USER\Source\Workspaces\Workspace\WebDirectory\Data\obj\Release\Data.pdb

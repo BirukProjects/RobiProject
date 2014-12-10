@@ -1,0 +1,96 @@
+﻿
+@{
+    ViewBag.Title = "Index1";
+}
+
+
+<!DOCTYPE html>
+<html data-ng-app="app" id="ng-app" lang="sv">
+<head>
+    <title>Customer App</title>
+    
+    @*<style>
+        #mydiv {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 1000;
+            background-color: blueviolet;
+            opacity: .8;
+        }
+
+        .ajax-loader {
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            margin-left: -32px; /* -1 * image width / 2 */
+            margin-top: -32px; /* -1 * image height / 2 */
+            display: block;
+        }
+    </style>*@
+</head>
+<body>
+    <div data-ng-controller="UserController" class="container">
+        <h2>Customers</h2>
+        <strong class="error">{{ error }}</strong>
+        <div id="mydiv" data-ng-show="loading">
+            <img src="Images/482.gif" class="ajax-loader" />
+        </div>
+        <p data-ng-hide="addMode"><a data-ng-click="toggleAdd()" href="javascript:;" class="btn btn-primary">Add New</a></p>
+        <form name="addUser" data-ng-show="addMode" style="width: 600px; margin: 0px auto;">
+            <label>Name:</label><input type="text" data-ng-model="newuser.Name" required />
+            <label>Email:</label><input type="email" data-ng-model="newuser.Email" required />
+            <br />
+            <span class="error" data-ng-show="addCustomer.$error.email">Invalid Email format!</span>
+            <br />
+            <input type="submit" value="Add" data-ng-click="add()" data-ng-disabled="!addCustomer.$valid" class="btn btn-primary" />
+            <input type="button" value="Cancel" data-ng-click="toggleAdd()" class="btn btn-primary" />
+            <br />
+            <br />
+        </form>
+        <table class="table table-bordered table-hover" style="width: 800px">
+            <tr>
+                <th>#</th>
+                <th>Name</th>
+                <th>Email</th>
+                <th></th>
+            </tr>
+            <tr>
+                <td></td>
+                <td>
+                    <input type="text" data-ng-model="search.Name" />
+                </td>
+                <td>
+                    <input type="text" data-ng-model="search.Email" />
+                </td>
+                <td></td>
+            </tr>
+
+            <tr data-ng-repeat="user in users | filter:search">
+                <td><strong data-ng-hide="user.editMode">{{ user.UserId }}</strong></td>
+                <td>
+                    <p data-ng-hide="customer.editMode">{{ user.UserName }}</p>
+                    <p data-ng-show="customer.editMode">
+                        <input type="text" data-ng-model="user.UserName" />
+                    </p>
+                </td>
+                <td>
+                    <p data-ng-hide="customer.editMode">{{ user.Email }}</p>
+                    <input data-ng-show="customer.editMode" type="text" data-ng-model="user.Email" />
+                </td>
+                <td>
+                    <p data-ng-hide="user.editMode"><a data-ng-click="toggleEdit(customer)" href="javascript:;">Edit</a> | <a data-ng-click="delcustomer(user)" href="javascript:;">Delete</a></p>
+                    <p data-ng-show="user.editMode"><a data-ng-click="save(user)" href="javascript:;">Save</a> | <a data-ng-click="toggleEdit(user)" href="javascript:;">Cancel</a></p>
+                </td>
+            </tr>
+        </table>
+        <hr />
+    </div>
+
+
+    <script src="~/Content/AngulaJS/UserController.js"></script>
+
+</body>
+</html>

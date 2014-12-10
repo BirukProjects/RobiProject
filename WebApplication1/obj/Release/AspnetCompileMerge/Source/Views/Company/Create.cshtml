@@ -1,0 +1,168 @@
+﻿@model Data.Models.Company
+
+@{
+
+    Layout = "~/Views/Shared/_Layout.cshtml";
+
+}
+
+
+
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+
+    <div class="row">
+        <div class="col-lg-12">
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                   Company Registration Form
+                </div>
+
+                @Html.ValidationSummary(true)
+                <div class="panel-body">
+                    <div class="row">
+                        <div class="col-lg-6">
+                            <div class="form-group">
+                                @Html.LabelFor(model => model.CompanyName, "Company Name")
+                                <div class="col-md-10">
+                                    @Html.EditorFor(model => model.CompanyName)
+                                    @Html.ValidationMessageFor(model => model.CompanyName)
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                @Html.LabelFor(model => model.CompanyWebsite, "Company Website")
+                                <div class="col-md-10">
+                                    @Html.EditorFor(model => model.CompanyWebsite)
+                                    @Html.ValidationMessageFor(model => model.CompanyWebsite)
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                @Html.LabelFor(model => model.CompanyEmail1, "Company Email")
+                                <div class="col-md-10">
+                                    @Html.EditorFor(model => model.CompanyEmail1)
+                                    @Html.ValidationMessageFor(model => model.CompanyEmail1)
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                @Html.LabelFor(model => model.CompanyEmail2, "Company Email 2")
+                                <div class="col-md-10">
+                                    @Html.EditorFor(model => model.CompanyEmail2)
+                                    @Html.ValidationMessageFor(model => model.CompanyEmail2)
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                @Html.LabelFor(model => model.CompanyTelephone, "Company Telephone")
+                                <div class="col-md-10">
+                                    @Html.EditorFor(model => model.CompanyTelephone)
+                                    @Html.ValidationMessageFor(model => model.CompanyTelephone)
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                @Html.LabelFor(model => model.CompanyTypeId, "Company Type")
+                                <div class="col-md-10">
+                                    @Html.DropDownList("CompanyTypeId", null, String.Empty)
+                                    @Html.ValidationMessageFor(model => model.CompanyTypeId)
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                @Html.LabelFor(model => model.UserOwnerId, "User Owner")
+                                <div class="col-md-10">
+                                    @Html.DropDownList("UserId", null, String.Empty)
+                                    @Html.ValidationMessageFor(model => model.UserOwnerId)
+                                </div>
+                            </div>
+                        </div>
+                        <!-- /.col-lg-6 (nested) -->
+                        <div class="col-lg-6">
+                            <div class="form-group">
+                                @Html.LabelFor(model => model.UserCreatorId, "User Creator")
+                                <div class="col-md-10">
+                                    @Html.DropDownList("UserId", null, String.Empty)
+                                    @Html.ValidationMessageFor(model => model.UserCreatorId)
+                                </div>
+                            </div>
+
+
+                            <div class="form-group">
+                                @Html.LabelFor(model => model.CompanyLogoPath, "Company Logo Path")
+                                <div class="col-md-10">
+                                    @Html.TextBoxFor(model => model.CompanyLogoPath, new { @type = "file" })
+                                    @Html.ValidationMessageFor(model => model.CompanyLogoPath)
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                @Html.LabelFor(model => model.CreationDate, "Creation Date")
+                                <div class="col-md-10">
+                                    @Html.EditorFor(model => model.CreationDate)
+                                    @Html.ValidationMessageFor(model => model.CreationDate)
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                @Html.LabelFor(model => model.LastUpdateDate)
+                                <div class="col-md-10">
+                                    @Html.EditorFor(model => model.LastUpdateDate)
+                                    @Html.ValidationMessageFor(model => model.LastUpdateDate)
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                @Html.LabelFor(model => model.CompanyFoundedDate)
+                                <div class="col-md-10">
+                                    @Html.EditorFor(model => model.CompanyFoundedDate)
+                                    @Html.ValidationMessageFor(model => model.CompanyFoundedDate)
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                @Html.LabelFor(model => model.turnover)
+                                <div class="col-md-10">
+                                    @Html.EditorFor(model => model.turnover)
+                                    @Html.ValidationMessageFor(model => model.turnover)
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                @Html.LabelFor(model => model.numberOfEmployees)
+                                <div class="col-md-10">
+                                    @Html.EditorFor(model => model.numberOfEmployees)
+                                    @Html.ValidationMessageFor(model => model.numberOfEmployees)
+                                </div>
+                            </div>
+
+                        </div>
+                        <!-- /.col-lg-6 (nested) -->
+                    </div>
+                    <!-- /.row (nested) -->
+
+                    <div class="form-group">
+                        <div class="col-md-offset-2 col-md-10">
+                            <input type="submit" value="Save" class="button-2-colorful" />
+                        </div>
+                    </div>
+                 </div>
+                <!-- /.panel-body -->
+            </div>
+                        <!-- /.panel -->
+                    </div>
+                    <!-- /.col-lg-12 -->
+                </div>
+                <!-- /.row -->
+                }
+
+                <div>
+                    @Html.ActionLink("Back to List", "Index")
+                </div>
+
+                @*@section Scripts {
+                @Scripts.Render("~/bundles/jqueryval")
+            }*@

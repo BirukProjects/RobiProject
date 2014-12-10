@@ -1,0 +1,9 @@
+C:\Users\USER\Source\Workspaces\Workspace\WebDirectory\WebDirectory.Services\bin\Debug\WebDirectory.Services.dll
+C:\Users\USER\Source\Workspaces\Workspace\WebDirectory\WebDirectory.Services\bin\Debug\WebDirectory.Services.pdb
+C:\Users\USER\Source\Workspaces\Workspace\WebDirectory\WebDirectory.Services\bin\Debug\Data.dll
+C:\Users\USER\Source\Workspaces\Workspace\WebDirectory\WebDirectory.Services\bin\Debug\EntityFramework.dll
+C:\Users\USER\Source\Workspaces\Workspace\WebDirectory\WebDirectory.Services\bin\Debug\Data.pdb
+C:\Users\USER\Source\Workspaces\Workspace\WebDirectory\WebDirectory.Services\bin\Debug\EntityFramework.xml
+C:\Users\USER\Source\Workspaces\Workspace\WebDirectory\WebDirectory.Services\obj\Debug\WebDirectory.Services.csprojResolveAssemblyReference.cache
+C:\Users\USER\Source\Workspaces\Workspace\WebDirectory\WebDirectory.Services\obj\Debug\WebDirectory.Services.dll
+C:\Users\USER\Source\Workspaces\Workspace\WebDirectory\WebDirectory.Services\obj\Debug\WebDirectory.Services.pdb

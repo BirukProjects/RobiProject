@@ -1,0 +1,29 @@
+﻿
+@{
+    ViewBag.Title = "TempUsers";
+}
+
+<body ng-app="ApplicationModule">
+    <div>
+        <div>
+            <div>
+                <table>
+                    <tr>
+                        <td><a href="showUser"> Show User </a></td>
+                        <td><a href="addUser"> Add User </a></td>
+                    </tr>
+                </table>
+            </div>
+            <div>
+                <div ng-view></div>
+            </div>
+        </div>
+    </div>
+
+</body>
+
+<script src="~/Content/AngulaJS/AddUseController.js"></script>
+<script src="~/Content/AngulaJS/DeleteUserController.js"></script>
+<script src="~/Content/AngulaJS/EditUserController.js"></script>
+<script src="~/Content/AngulaJS/ShowUsersController.js"></script>
+<script src="~/Content/AngulaJS/Module.js"></script>

@@ -1,0 +1,26 @@
+﻿<h2>EditUser</h2>
+
+<table>
+    <tr>
+        <td>Email</td>
+        <td><input type="text" ng-model="User.Email" />  </td>
+    </tr>
+    <tr>
+        <td>UserName</td>
+        <td><input type="text" ng-model="User.UserName" />  </td>
+    </tr>
+    <tr>
+        <td>PasswordHash</td>
+        <td><input type="text" ng-model="User.PasswordHash" />  </td>
+    </tr>
+    @*<tr>
+        <td>DeptName</td>
+        <td><input type="text" ng-model="User.DeptName" />  </td>
+    </tr>
+    <tr>
+        <td>Designation</td>
+        <td><input type="text" ng-model="User.Designation" />  </td>
+    </tr>*@
+</table>
+<input type="button" value="Save" ng-click="save()" />
+<div>{{error}}</div>

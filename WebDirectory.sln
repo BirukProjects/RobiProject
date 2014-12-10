@@ -1,0 +1,66 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2013
+VisualStudioVersion = 12.0.21005.1
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebDirectory", "WebApplication1\WebDirectory.csproj", "{29CD5D3A-E08E-48D4-9C42-D7EECD771476}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Data", "Data", "{092A95D6-E2B4-47DC-AB0A-EC4E8F36F5AF}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Data", "Data\Data.csproj", "{61BAF1F5-3640-4DD4-904A-20166A05644A}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Services", "Services", "{A2ED75DA-CF70-4CA4-B09E-5FC76A15E642}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebDirectory.Services", "WebDirectory.Services\WebDirectory.Services.csproj", "{79E200C5-8117-450A-8122-DC5E4FA6F5CA}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".nuget", ".nuget", "{BC5929F5-35AE-426F-BD18-167DA772C2B7}"
+	ProjectSection(SolutionItems) = preProject
+		.nuget\NuGet.Config = .nuget\NuGet.Config
+		.nuget\NuGet.exe = .nuget\NuGet.exe
+		.nuget\NuGet.targets = .nuget\NuGet.targets
+	EndProjectSection
+EndProject
+Global
+	GlobalSection(TeamFoundationVersionControl) = preSolution
+		SccNumberOfProjects = 4
+		SccEnterpriseProvider = {4CA58AB2-18FA-4F8D-95D4-32DDF27D184C}
+		SccTeamFoundationServer = https://droponthis.visualstudio.com/defaultcollection
+		SccLocalPath0 = .
+		SccProjectUniqueName1 = WebApplication1\\WebDirectory.csproj
+		SccProjectName1 = WebApplication1
+		SccLocalPath1 = WebApplication1
+		SccProjectUniqueName2 = Data\\Data.csproj
+		SccProjectTopLevelParentUniqueName2 = WebDirectory.sln
+		SccProjectName2 = Data
+		SccLocalPath2 = Data
+		SccProjectUniqueName3 = WebDirectory.Services\\WebDirectory.Services.csproj
+		SccProjectTopLevelParentUniqueName3 = WebDirectory.sln
+		SccProjectName3 = WebDirectory.Services
+		SccLocalPath3 = WebDirectory.Services
+	EndGlobalSection
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{29CD5D3A-E08E-48D4-9C42-D7EECD771476}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{29CD5D3A-E08E-48D4-9C42-D7EECD771476}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{29CD5D3A-E08E-48D4-9C42-D7EECD771476}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{29CD5D3A-E08E-48D4-9C42-D7EECD771476}.Release|Any CPU.Build.0 = Release|Any CPU
+		{61BAF1F5-3640-4DD4-904A-20166A05644A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{61BAF1F5-3640-4DD4-904A-20166A05644A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{61BAF1F5-3640-4DD4-904A-20166A05644A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{61BAF1F5-3640-4DD4-904A-20166A05644A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{79E200C5-8117-450A-8122-DC5E4FA6F5CA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{79E200C5-8117-450A-8122-DC5E4FA6F5CA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{79E200C5-8117-450A-8122-DC5E4FA6F5CA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{79E200C5-8117-450A-8122-DC5E4FA6F5CA}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{61BAF1F5-3640-4DD4-904A-20166A05644A} = {092A95D6-E2B4-47DC-AB0A-EC4E8F36F5AF}
+		{79E200C5-8117-450A-8122-DC5E4FA6F5CA} = {A2ED75DA-CF70-4CA4-B09E-5FC76A15E642}
+	EndGlobalSection
+EndGlobal

@@ -1,0 +1,10 @@
+C:\Users\USER\Source\Workspaces\Workspace\WebDirectory\Data\obj\Debug\Data.csprojResolveAssemblyReference.cache
+C:\Users\USER\Source\Workspaces\Workspace\WebDirectory\Data\bin\Debug\Data.dll.config
+C:\Users\USER\Source\Workspaces\Workspace\WebDirectory\Data\bin\Debug\Data.dll
+C:\Users\USER\Source\Workspaces\Workspace\WebDirectory\Data\bin\Debug\Data.pdb
+C:\Users\USER\Source\Workspaces\Workspace\WebDirectory\Data\bin\Debug\EntityFramework.dll
+C:\Users\USER\Source\Workspaces\Workspace\WebDirectory\Data\bin\Debug\EntityFramework.SqlServer.dll
+C:\Users\USER\Source\Workspaces\Workspace\WebDirectory\Data\bin\Debug\EntityFramework.xml
+C:\Users\USER\Source\Workspaces\Workspace\WebDirectory\Data\bin\Debug\EntityFramework.SqlServer.xml
+C:\Users\USER\Source\Workspaces\Workspace\WebDirectory\Data\obj\Debug\Data.dll
+C:\Users\USER\Source\Workspaces\Workspace\WebDirectory\Data\obj\Debug\Data.pdb

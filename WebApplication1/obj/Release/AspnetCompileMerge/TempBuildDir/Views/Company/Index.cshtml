@@ -1,0 +1,142 @@
+﻿@model IEnumerable<Data.Models.Company>
+
+@{
+    ViewBag.Title = "Companies";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<div class="row">
+    <div class="col-lg-12">
+        <div class="panel panel-default">
+            <div class="panel-heading">
+               Companies List 
+            </div>
+            <!-- /.panel-heading -->
+            <div class="panel-body">
+                <div class="table-responsive">
+
+                    <table class="table table-hover" id="CompnaiesTables-data">
+                        <tr>
+                            <th>
+                                @Html.Label("Name")
+                            </th>
+                            <th>
+                                @Html.Label("Website")
+                            </th>
+                            <th>
+                                @Html.Label("Email")
+                            </th>
+                            @*<th>
+                    @Html.DisplayNameFor(model => model.CompanyEmail2)
+                </th>*@
+                            <th>
+                                @Html.Label("Telephone")
+                            </th>
+                            <th>
+                                @Html.Label("Type")
+                            </th>
+                            @*<th>
+                    @Html.DisplayNameFor(model => model.UserOwnerId)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.UserCreatorId)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.CompanyLogoPath)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.CreationDate)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.LastUpdateDate)
+                </th>*@
+                            <th>
+                                @Html.Label("Founded Date")
+                            </th>
+                            <th>
+                                @Html.Label("turn over")
+                            </th>
+                            <th>
+                                @Html.Label("NO of Employees")
+                            </th>
+                            <th></th>
+                        </tr>
+
+                        @foreach (var item in Model)
+                        {
+                            <tr>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.CompanyName)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.CompanyWebsite)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.CompanyEmail1)
+                                </td>
+                                @*<td>
+                        @Html.DisplayFor(modelItem => item.CompanyEmail2)
+                    </td>*@
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.CompanyTelephone)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.CompanyType.CompanyTypeName)
+                                </td>
+                                @*<td>
+                        @Html.DisplayFor(modelItem => item.User.UserEmail)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.User1.UserEmail)
+                    </td>*@
+                                @*<td>
+                        @Html.DisplayFor(modelItem => item.CompanyLogoPath)
+                    </td>*@
+                                @*<td>
+                        @Html.DisplayFor(modelItem => item.CreationDate)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.LastUpdateDate)
+                    </td>*@
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.CompanyFoundedDate)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.turnover)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.numberOfEmployees)
+                                </td>
+                                <td>
+                                    @Html.ActionLink("Edit", "Edit", new { id = item.CompanyId }) |
+                                    @Html.ActionLink("Details", "Details", new { id = item.CompanyId }) |
+                                   @* @Html.ActionLink("Delete", "Delete", new { id = item.CompanyId })*@
+                                </td>
+                            </tr>
+                        }
+
+                    </table>
+                </div>
+
+            </div>
+            <!-- /.panel -->
+        </div>
+        <!-- /.col-lg-12 -->
+    </div>
+    </div>
+<script src="~/scripts/jquery-2.1.1.js"></script>
+<script src="~/scripts/jquery.js"></script>
+<script src="~/scripts/bootstrap.min.js"></script>
+<script src="~/scripts/dataTables.bootstrap.js"></script>
+<script src="~/scripts/sb-admin-2.js"></script>
+<script src="~/scripts/jquery.dataTables.js"></script>
+<script>
+    $(document).ready(function () {
+        $('#CompnaiesTables-data').dataTable();
+    });
+</script>

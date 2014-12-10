@@ -1,0 +1,95 @@
+﻿<!DOCTYPE html>
+
+<html>
+<head>
+    <meta charset="utf-8">
+
+    <title>@ViewBag.Title - Glocal</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no" />
+   <link href="~/css/bootstrap.css" rel="stylesheet" />
+  <link href="~/css/dataTables.bootstrap.css" rel="stylesheet" />
+    <link rel="stylesheet" href="~/css/jquery-ui-1.10.3.custom.min.css" />
+    <link rel="stylesheet" href="~/css/jquery-selectbox.css" />
+    <link rel="stylesheet" href="~/css/responsive-grid.css" />
+    <link rel="stylesheet" href="~/css/styles.css" />
+    <link id="theme-color" rel="stylesheet" href="~/css/green.css" />
+    <link rel="stylesheet" href="~/css/header-1.css" />
+    <link rel="stylesheet" href="~/css/responsive.css" />
+   
+
+    
+
+    <!--[if lt IE 9]>
+        <link rel="stylesheet" href="css/styles-ie8-and-down.css" />
+    <![endif]-->
+
+</head>
+<body>
+
+    @*<div id="theme-switcher" class="theme-switcher">
+        <div id="switcher-toggle-button" class="switcher-toggle-button"></div>
+        <div class="label">Colors:</div>
+        <ul id="color-switcher" class="color-switcher">
+            <li class="green"></li>
+            <li class="red"></li>
+            <li class="blue"></li>
+            <li class="grey"></li>
+            <li class="violet"></li>
+            <li class="orange"></li>
+        </ul>
+        <div class="label">Layout:</div>
+        <select id="layout-switcher" class="layout-switcher" name="layout-switcher">
+            <option selected="" value="fullscreen">Fullscreen</option>
+            <option value="boxed">Boxed</option>
+        </select>
+        <div class="label">Background:</div>
+        <ul id="background-switcher" class="background-switcher">
+            <li class="background-1"></li>
+            <li class="background-2"></li>
+            <li class="background-3"></li>
+        </ul>
+    </div>*@
+
+    <header class="section">
+
+        @Html.Partial("_Header")
+
+    </header>
+
+    <section class="section content">
+
+        @Html.Partial("_Search")
+
+        @Html.Partial("_Map")
+
+        @Html.Partial("_Industries")
+
+
+
+        <div class="interlayer"></div>
+
+    </section>
+    <div class="container body-content">
+    <div class="content-wrapper">
+        @RenderBody()
+        <hr />
+        <div class="interlayer"></div>
+      
+    </div>
+        </div>
+    @Html.Partial("_footer")
+   
+   
+    <script src="https://maps.googleapis.com/maps/api/js?sensor=false"></script> 
+
+    @Scripts.Render("~/bundles/WebDirUI")
+   @* @Scripts.Render("~/bundles/jquery")*@
+    @Scripts.Render("~/bundles/bootstrap")
+   
+
+        
+     
+
+</body>
+
+</html>
