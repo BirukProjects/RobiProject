@@ -26,6 +26,10 @@ namespace WebApplication1.Controllers
         {
             return View();
         }
+        public ActionResult TempUsers()
+        {
+            return View();
+        }
         public ActionResult AddNewUser()
         {
             return PartialView("_AddUser");

@@ -1,149 +1,95 @@
-﻿@model Data.Models.Company
+﻿<div data-ng-app="app" id="ng-app" lang="sv">
 
-@{
-    ViewBag.Title = "Edit";
-}
 
-<h2>Edit</h2>
+    <div data-ng-controller="ProductController">
 
-@using (Html.BeginForm())
-{
-    @Html.AntiForgeryToken()
-    
-    <div class="form-horizontal">
-        <h4>Company</h4>
-        <hr />
-        @Html.ValidationSummary(true)
-        @Html.HiddenFor(model => model.CompanyId)
+        <div class="company-content-container container-16">
+            <p data-ng-hide="addMode"><a data-ng-click="toggleAdd()" href="javascript:;" class="button-2-colorful">Add new Product</a></p>
+            <div class="comment-message block" id="addProduct" data-ng-show="addMode">
+                <div class="comment-message-title">
+                    New <span class="text-colorful">PRODUCT &amp; SERVICES </span>
+                </div>
+                <form class="comment-message-form">
+                    <input type="text" class="text-input-grey name" placeholder="Name *" data-ng-model="newCompanyProductService.name" />
+                    <div 
+                         flow-init
+                         flow-file-added="!!{png:1,gif:1,jpg:1,jpeg:1}[$file.getExtension()]"
+                         flow-files-submitted="$flow.upload()">
+                        <div class="container">
 
-        <div class="form-group">
-            @Html.LabelFor(model => model.CompanyName, new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.CompanyName)
-                @Html.ValidationMessageFor(model => model.CompanyName)
+                            <p>
+                                Only PNG,GIF,JPG files allowed.
+                            </p>
+                            <div>
+                                <div class="thumbnail" ng-hide="$flow.files.length">
+                                    <img class="product-image" src="http://www.placehold.it/200x150/EFEFEF/AAAAAA&text=no+image" />
+                                </div>
+                                <div  ng-show="$flow.files.length">
+                                    <img class="product-image" width="300" flow-img="$flow.files[0]" />
+                                </div>
+                                <div>
+                                    <a href="#" class="btn btn-success" ng-hide="$flow.files.length" flow-btn flow-attrs="{accept:'image/*'}">Select image</a>
+                                    <a href="#" class="btn btn-success" ng-show="$flow.files.length" flow-btn flow-attrs="{accept:'image/*'}">Change</a>
+                                    <a href="#" class="btn btn-danger" ng-show="$flow.files.length"
+                                       ng-click="$flow.cancel()">
+                                        Remove
+                                    </a>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                    <input type="text" class="text-input-grey email" placeholder="Image *" data-ng-model="newCompanyProductService.url" />
+                    <input type="text" class="text-input-grey website" placeholder="Tag" data-ng-model="newCompanyProductService.tag" />
+                    <textarea class="text-input-grey comment-message-main" placeholder="Description" data-ng-model="newCompanyProductService.description"></textarea>
+                    <input type="submit" class="button-2-colorful to-right" value="Add" name="AddProduct" data-ng-click="add()" />
+                    <input type="button" value="Cancel" data-ng-click="toggleAdd()" class="button-2-colorful" />
+                </form>
+
             </div>
-        </div>
 
-        <div class="form-group">
-            @Html.LabelFor(model => model.CompanyWebsite, new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.CompanyWebsite)
-                @Html.ValidationMessageFor(model => model.CompanyWebsite)
+            <div class="company-details block">
+                <table class="table table-bordered table-hover" style="width: 800px">
+                    <tr>
+                        <th>#</th>
+                        <th>Name</th>
+                        <th>Description</th>
+                        <th></th>
+                    </tr>
+                    <tr>
+                        <td></td>
+                        <td>
+                            <input type="text" class="sidebar-search-input" placeholder="Search..." data-ng-model="search.name" />
+                        </td>
+                        <td>
+                            <input type="text" class="sidebar-search-input" placeholder="Search..." data-ng-model="search.description" />
+                        </td>
+                        <td></td>
+                    </tr>
+
+                    <tr data-ng-repeat="product in products | filter:search">
+                        <td><strong data-ng-hide="product.editMode" ng-hide="true">{{ product.companyProductServiceId }}</strong></td>
+                        <td>
+                            <p data-ng-hide="product.editMode">{{ product.name }}</p>
+                            <p data-ng-show="product.editMode">
+                                <input type="text" data-ng-model="product.name" />
+                            </p>
+                        </td>
+                        <td>
+                            <p data-ng-hide="product.editMode">{{ product.description }}</p>
+                            <input data-ng-show="product.editMode" type="text" data-ng-model="product.description" />
+                        </td>
+                        <td>
+                            <p data-ng-hide="product.editMode"><a data-ng-click="toggleEdit(product)" href="javascript:;">Edit</a> | <a data-ng-click="deleteProduct(product)" href="javascript:;">Delete</a></p>
+                            <p data-ng-show="product.editMode"><a data-ng-click="save(product)" href="javascript:;">Save</a> | <a data-ng-click="toggleEdit(product)" href="javascript:;">Cancel</a></p>
+                        </td>
+                    </tr>
+                </table>
             </div>
-        </div>
 
-        <div class="form-group">
-            @Html.LabelFor(model => model.CompanyEmail1, new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.CompanyEmail1)
-                @Html.ValidationMessageFor(model => model.CompanyEmail1)
-            </div>
-        </div>
-
-        <div class="form-group">
-            @Html.LabelFor(model => model.CompanyEmail2, new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.CompanyEmail2)
-                @Html.ValidationMessageFor(model => model.CompanyEmail2)
-            </div>
-        </div>
-
-        <div class="form-group">
-            @Html.LabelFor(model => model.CompanyTelephone, new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.CompanyTelephone)
-                @Html.ValidationMessageFor(model => model.CompanyTelephone)
-            </div>
-        </div>
-
-        <div class="form-group">
-            @Html.LabelFor(model => model.CompanyTypeId, new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.CompanyTypeId)
-                @Html.ValidationMessageFor(model => model.CompanyTypeId)
-            </div>
-        </div>
-
-        <div class="form-group">
-            @Html.LabelFor(model => model.UserOwnerId, new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.UserOwnerId)
-                @Html.ValidationMessageFor(model => model.UserOwnerId)
-            </div>
-        </div>
-
-        <div class="form-group">
-            @Html.LabelFor(model => model.UserCreatorId, new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.UserCreatorId)
-                @Html.ValidationMessageFor(model => model.UserCreatorId)
-            </div>
-        </div>
-
-        <div class="form-group">
-            @Html.LabelFor(model => model.CompanyLogoPath, new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.CompanyLogoPath)
-                @Html.ValidationMessageFor(model => model.CompanyLogoPath)
-            </div>
-        </div>
-
-        <div class="form-group">
-            @Html.LabelFor(model => model.CreationDate, new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.CreationDate)
-                @Html.ValidationMessageFor(model => model.CreationDate)
-            </div>
-        </div>
-
-        <div class="form-group">
-            @Html.LabelFor(model => model.LastUpdateDate, new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.LastUpdateDate)
-                @Html.ValidationMessageFor(model => model.LastUpdateDate)
-            </div>
-        </div>
-
-        <div class="form-group">
-            @Html.LabelFor(model => model.CompanyFoundedDate, new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.CompanyFoundedDate)
-                @Html.ValidationMessageFor(model => model.CompanyFoundedDate)
-            </div>
-        </div>
-
-        <div class="form-group">
-            @Html.LabelFor(model => model.turnover, new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.turnover)
-                @Html.ValidationMessageFor(model => model.turnover)
-            </div>
-        </div>
-
-        <div class="form-group">
-            @Html.LabelFor(model => model.numberOfEmployees, new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.numberOfEmployees)
-                @Html.ValidationMessageFor(model => model.numberOfEmployees)
-            </div>
-        </div>
-
-        <div class="form-group">
-            @Html.LabelFor(model => model.companydescription, new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.companydescription)
-                @Html.ValidationMessageFor(model => model.companydescription)
-            </div>
-        </div>
-
-        <div class="form-group">
-            <div class="col-md-offset-2 col-md-10">
-                <input type="submit" value="Save" class="btn btn-default" />
-            </div>
-        </div>
-    </div>
-}
-
-<div>
-    @Html.ActionLink("Back to List", "Index")
+        </div><!-- end of .company-content-container -->
 </div>
+</div>
+<script src="~/Scripts/angular.js"></script>
+<script src="~/scripts/ng-flow-standalone.js"></script>
+<script src="~/Content/AngulaJS/ProductController.js"></script>  

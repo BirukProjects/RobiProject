@@ -1,96 +1,78 @@
-﻿
-@{
+﻿@{
     ViewBag.Title = "Index1";
+    Layout = "~/Views/Shared/_Layout1.cshtml";
 }
+<div data-ng-app="app" id="ng-app" lang="sv">
 
+    <div data-ng-controller="CategoryController">
 
-<!DOCTYPE html>
-<html data-ng-app="app" id="ng-app" lang="sv">
-<head>
-    <title>Customer App</title>
-    
-    @*<style>
-        #mydiv {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            z-index: 1000;
-            background-color: blueviolet;
-            opacity: .8;
-        }
-
-        .ajax-loader {
-            position: absolute;
-            left: 50%;
-            top: 50%;
-            margin-left: -32px; /* -1 * image width / 2 */
-            margin-top: -32px; /* -1 * image height / 2 */
-            display: block;
-        }
-    </style>*@
-</head>
-<body>
-    <div data-ng-controller="UserController" class="container">
-        <h2>Customers</h2>
+        <br />
         <strong class="error">{{ error }}</strong>
-        <div id="mydiv" data-ng-show="loading">
-            <img src="Images/482.gif" class="ajax-loader" />
+        <div class="our-directory block">
+            <p data-ng-hide="addModeCat"><a data-ng-click="toggleAddCat()" href="javascript:;" class="button-2-colorful">Create New category</a></p>
+            <form name="addCategory" data-ng-show="addModeCat" class="comment-message-form">
+
+                <div class="comment-message">
+                    <div class="comment-message-title">
+                        <span class="text-colorful">Add New Category</span>
+                    </div>
+
+
+                    <label>Name:</label><input type="text" class="text-input-grey" data-ng-model="newCategory.category1" required />
+                    <label>Email:</label><input type="text" class="text-input-grey" data-ng-model="newCategory.Subcategory" required />
+                    <br />
+                    <span class="error" data-ng-show="addCategory.$error.Subcategory">Invalid Email format!</span>
+                    <br />
+                    <input type="submit" value="AddCat" data-ng-click="addCat()" data-ng-disabled="!addCategory.$valid" class="button-2-colorful" />
+                    <input type="button" value="Cancel" data-ng-click="toggleAddCat()" class="button-2-colorful" />
+                    <br />
+                    <br />
+                </div>
+            </form>
         </div>
-        <p data-ng-hide="addMode"><a data-ng-click="toggleAdd()" href="javascript:;" class="btn btn-primary">Add New</a></p>
-        <form name="addUser" data-ng-show="addMode" style="width: 600px; margin: 0px auto;">
-            <label>Name:</label><input type="text" data-ng-model="newuser.Name" required />
-            <label>Email:</label><input type="email" data-ng-model="newuser.Email" required />
-            <br />
-            <span class="error" data-ng-show="addCustomer.$error.email">Invalid Email format!</span>
-            <br />
-            <input type="submit" value="Add" data-ng-click="add()" data-ng-disabled="!addCustomer.$valid" class="btn btn-primary" />
-            <input type="button" value="Cancel" data-ng-click="toggleAdd()" class="btn btn-primary" />
-            <br />
-            <br />
-        </form>
         <table class="table table-bordered table-hover" style="width: 800px">
             <tr>
                 <th>#</th>
-                <th>Name</th>
-                <th>Email</th>
+                <th>Category</th>
+                <th>Description</th>
                 <th></th>
             </tr>
             <tr>
                 <td></td>
                 <td>
-                    <input type="text" data-ng-model="search.Name" />
+                    <input type="text" class="sidebar-search-input" placeholder="Search..." data-ng-model="search.category1" />
                 </td>
                 <td>
-                    <input type="text" data-ng-model="search.Email" />
+                    <input type="text" class="sidebar-search-input" placeholder="Search..." data-ng-model="search.subcategory" />
                 </td>
                 <td></td>
             </tr>
 
-            <tr data-ng-repeat="user in users | filter:search">
-                <td><strong data-ng-hide="user.editMode">{{ user.UserId }}</strong></td>
+            <tr data-ng-repeat="category in categorys | filter:search">
+                <td><strong data-ng-hide="category.editMode" ng-hide="true">{{ category.CategoryID }}</strong></td>
                 <td>
-                    <p data-ng-hide="customer.editMode">{{ user.UserName }}</p>
-                    <p data-ng-show="customer.editMode">
-                        <input type="text" data-ng-model="user.UserName" />
+                    <p data-ng-hide="category.editMode">{{ category.category1 }}</p>
+                    <p data-ng-show="category.editMode">
+                        <input type="text" data-ng-model="category.category1" />
                     </p>
                 </td>
                 <td>
-                    <p data-ng-hide="customer.editMode">{{ user.Email }}</p>
-                    <input data-ng-show="customer.editMode" type="text" data-ng-model="user.Email" />
+                    <p data-ng-hide="category.editMode">{{ category.subcategory }}</p>
+                    <input data-ng-show="category.editMode" type="text" data-ng-model="category.subcategory" />
                 </td>
                 <td>
-                    <p data-ng-hide="user.editMode"><a data-ng-click="toggleEdit(customer)" href="javascript:;">Edit</a> | <a data-ng-click="delcustomer(user)" href="javascript:;">Delete</a></p>
-                    <p data-ng-show="user.editMode"><a data-ng-click="save(user)" href="javascript:;">Save</a> | <a data-ng-click="toggleEdit(user)" href="javascript:;">Cancel</a></p>
+                    <p data-ng-hide="category.editMode"><a data-ng-click="toggleEditCat(category)" href="javascript:;">Edit</a> | <a data-ng-click="delcategory(category)" href="javascript:;">Delete</a></p>
+                    <p data-ng-show="category.editMode"><a data-ng-click="save(category)" href="javascript:;">Save</a> | <a data-ng-click="toggleEdit(category)" href="javascript:;">Cancel</a></p>
                 </td>
             </tr>
         </table>
         <hr />
     </div>
-
-
-    <script src="~/Content/AngulaJS/UserController.js"></script>
-
-</body>
-</html>
+    </div>
+    
+    <script src="~/scripts/angular.min.js"></script>
+   
+<script src="~/scripts/angular-resource.js"></script>
+ 
+   
+<script src="~/Content/AngulaJS/CategoryController.js"></script>

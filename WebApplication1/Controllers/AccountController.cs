@@ -11,6 +11,7 @@ using Microsoft.Owin.Security;
 using WebApplication1.Models;
 using WebDirectory.Services;
 using Data.Models;
+using Microsoft.Owin.Host.SystemWeb;
 
 namespace WebApplication1.Controllers
 {
@@ -83,7 +84,7 @@ namespace WebApplication1.Controllers
         {
             if (ModelState.IsValid)
             {
-                var user = new ApplicationUser() { UserName = model.UserName };
+                var user = new ApplicationUser() { UserName = model.UserName, Email = model.UserEmail };
                 var result = await UserManager.CreateAsync(user, model.Password);
                 
                 if (result.Succeeded)

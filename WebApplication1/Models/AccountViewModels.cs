@@ -93,10 +93,10 @@ namespace WebApplication1.Models
         [DataType(DataType.EmailAddress)]
         [Display(Name = "User Email ")] 
         public string UserEmail { get; set; }
-        [Required]
+        //[Required]
 
-        [Display(Name = "Package")]
-        public int PackageId { get; set; }
+        //[Display(Name = "Package")]
+        //public int PackageId { get; set; }
         [Required]
         [StringLength(100, ErrorMessage = "The {0} must be at least {2} characters long.", MinimumLength = 6)]
         [DataType(DataType.Password)]

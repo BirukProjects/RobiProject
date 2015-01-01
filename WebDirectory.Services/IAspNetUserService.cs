@@ -17,9 +17,10 @@ namespace WebDirectory.Services
        bool DeleteById(int id);
        bool EditAspNetUser(AspNetUser aspNetUser);
        AspNetUser FindById(int id);
+       AspNetUser FindById(string id);
        List<AspNetUser> GetAllAspNetUser();
-      
 
+       string HashPassword(string password);
 
    }
 }

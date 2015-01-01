@@ -1,29 +1,58 @@
 ﻿
-@{
-    ViewBag.Title = "TempUsers";
-}
+<script src="~/scripts/angular.js"></script>
+<script src="~/scripts/ng-flow-standalone.js"></script>
+<script src="~/Content/AngulaJS/app.js"></script>
 
-<body ng-app="ApplicationModule">
-    <div>
-        <div>
+<style>
+    .thumbnail {
+        max-width: 200px;
+        max-height: 150px;
+        line-height: 20px;
+        margin-bottom: 5px;
+    }
+</style>
+
+
+
+<div ng-app ="app"
+     flow-init
+         flow-file-added="!!{png:1,gif:1,jpg:1,jpeg:1}[$file.getExtension()]"
+         flow-files-submitted="$flow.upload()"  >
+
+
+
+       
+        
+
+
+        <div class="container">
+            
+            <p>
+                Only PNG,GIF,JPG files allowed.
+            </p>
             <div>
-                <table>
-                    <tr>
-                        <td><a href="showUser"> Show User </a></td>
-                        <td><a href="addUser"> Add User </a></td>
-                    </tr>
-                </table>
-            </div>
-            <div>
-                <div ng-view></div>
+                <div class="thumbnail" ng-hide="$flow.files.length">
+                    <img src="http://www.placehold.it/200x150/EFEFEF/AAAAAA&text=no+image" />
+                </div>
+                <div class="thumbnail" ng-show="$flow.files.length">
+                    <img flow-img="$flow.files[0]" />
+                </div>
+                <div>
+                    <a href="#" class="btn btn-success" ng-hide="$flow.files.length" flow-btn flow-attrs="{accept:'image/*'}">Select image</a>
+                    <a href="#" class="btn btn-success" ng-show="$flow.files.length" flow-btn flow-attrs="{accept:'image/*'}">Change</a>
+                    <a href="#" class="btn btn-danger" ng-show="$flow.files.length"
+                       ng-click="$flow.cancel()">
+                        Remove
+                    </a>
+                </div>
+                
             </div>
         </div>
     </div>
+   
+</>
 
-</body>
 
-<script src="~/Content/AngulaJS/AddUseController.js"></script>
-<script src="~/Content/AngulaJS/DeleteUserController.js"></script>
-<script src="~/Content/AngulaJS/EditUserController.js"></script>
-<script src="~/Content/AngulaJS/ShowUsersController.js"></script>
-<script src="~/Content/AngulaJS/Module.js"></script>
+
+
+

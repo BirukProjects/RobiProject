@@ -15,7 +15,7 @@ namespace WebDirectory.Data.Repository
         bool Edit(T entity);
         T FindById(int id);
         T FindById(Guid id);
-
+        T FindById(string id);
         IEnumerable<T> Get(
         Expression<Func<T, bool>> filter = null,
         Func<IQueryable<T>, IOrderedQueryable<T>> orderBy = null,

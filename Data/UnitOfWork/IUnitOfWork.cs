@@ -13,6 +13,8 @@ namespace WebDirectory.Data.Repository
         IGenericRepository<User> UserRepository { get; }
         IGenericRepository<Company> CompanyRepository { get; }
         IGenericRepository<CompanyCategory> CompanyCategoryRepository { get; }
+
+        IGenericRepository<CompaniesCategory> CompaniesCategoryRepository { get; }
         IGenericRepository<Package> PackageRepository { get; }
         IGenericRepository<UserPreference> UserPreferenceRepository { get; }
         IGenericRepository<CompanyMember> CompanyMemberRepository { get; }

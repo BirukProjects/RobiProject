@@ -1,4 +1,4 @@
-[assembly: WebActivatorEx.PreApplicationStartMethod(typeof(WebApplication1.App_Start.NinjectWebCommon), "Start")]
+﻿[assembly: WebActivatorEx.PreApplicationStartMethod(typeof(WebApplication1.App_Start.NinjectWebCommon), "Start")]
 [assembly: WebActivatorEx.ApplicationShutdownMethodAttribute(typeof(WebApplication1.App_Start.NinjectWebCommon), "Stop")]
 
 namespace WebApplication1.App_Start
@@ -12,6 +12,8 @@ namespace WebApplication1.App_Start
     using WebDirectory.Services;
     using Ninject;
     using Ninject.Web.Common;
+
+
     using Web.Directory.Repository;
 
     public static class NinjectWebCommon 
@@ -49,6 +51,10 @@ namespace WebApplication1.App_Start
                 kernel.Bind<IHttpModule>().To<HttpApplicationInitializationHttpModule>();
 
                 RegisterServices(kernel);
+
+                System.Web.Http.GlobalConfiguration.Configuration.DependencyResolver = new NinjectResolver(kernel);
+                //System.Web.Http.GlobalConfiguration.Configuration.DependencyResolver = new Ninject.Web.WebApi.NinjectDependencyResolver(kernel);
+
                 return kernel;
             }
             catch
@@ -77,6 +83,7 @@ namespace WebApplication1.App_Start
             kernel.Bind<IPackageService>().To<PackageService>();
             kernel.Bind<IProductCategoryService>().To<ProductCategoryService>();
             kernel.Bind<IAspNetUserService>().To<AspNetUserService>();
+            kernel.Bind<ICompaniesCategoryService>().To<CompaniesCategoryService>();
         }        
     }
 }

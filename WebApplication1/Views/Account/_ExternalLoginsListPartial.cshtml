@@ -1,14 +1,16 @@
 ﻿@using Microsoft.Owin.Security
 
-<h4>Use another service to log in.</h4>
-<hr />
+@*<h4>Use another service to log in.</h4>*@
+
 @{
     var loginProviders = Context.GetOwinContext().Authentication.GetExternalAuthenticationTypes();
     if (loginProviders.Count() == 0)
     {
         <div>
-            <p>There are no external authentication services configured. See <a href="http://go.microsoft.com/fwlink/?LinkId=313242">this article</a>
-            for details on setting up this ASP.NET application to support logging in via external services.</p>
+            <p>
+                There are no external authentication services configured. See <a href="http://go.microsoft.com/fwlink/?LinkId=313242">this article</a>
+                for details on setting up this ASP.NET application to support logging in via external services.
+            </p>
         </div>
     }
     else
@@ -18,13 +20,29 @@
         using (Html.BeginForm(action, "Account", new { ReturnUrl = returnUrl }))
         {
             @Html.AntiForgeryToken()
-            <div id="socialLoginList">
-                <p>
-                @foreach (AuthenticationDescription p in loginProviders)
+            <div id="socialLoginList" class="center-block">
+                <div class="row">
+                    @foreach (AuthenticationDescription p in loginProviders)
 {
-    <button type="submit" class="btn-social btn-twitter" id="@p.AuthenticationType" name="provider" value="@p.AuthenticationType" title="Log in using your @p.Caption account">@p.AuthenticationType</button>
+    <div class="col-xs-9 col-xs-offset-1">
+        @if (@p.Caption.ToLower() == "google")
+        {
+            <button type="submit" value="@p.AuthenticationType" class="btn btn-block btn-social btn-google-plus" id="@p.AuthenticationType" name="provider" title="Log in using your @p.Caption account">
+                <i class="fa fa-google-plus"></i> Sign in with @p.AuthenticationType
+            </button>
+        }
+        else
+        {
+            <button type="submit" value="@p.AuthenticationType" class="btn btn-block btn-social btn-@p.Caption.ToLower()" id="@p.AuthenticationType" name="provider" title="Log in using your @p.Caption account">
+                <i class="fa fa-@p.Caption.ToLower()"></i> Sign in with @p.AuthenticationType
+            </button>
+        }
+
+        @*<button type="submit" class="btn-social btn-twitter" id="@p.AuthenticationType" name="provider" value="@p.AuthenticationType" title="Log in using your @p.Caption account">@p.AuthenticationType</button>*@
+        <br />
+    </div>
 }
-                </p>
+                </div>
             </div>
         }
     }

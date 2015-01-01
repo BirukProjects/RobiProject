@@ -26,10 +26,16 @@ namespace WebApplication1.Controllers
             _categoryService = categoryService;
             _adminUserService = iAspNetUserService;
         }
+        public CategoryController()
+        {
+
+
+            
+        }
         public ActionResult Index()
         {
-            var categorArea = _categoryAreaService.GetAllCategoryArea();
-            return View(categorArea);
+            //var categorArea = _categoryAreaService.GetAllCategoryArea();
+            return View();
         }
 
         // GET: /Company/Create

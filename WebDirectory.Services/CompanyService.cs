@@ -41,5 +41,20 @@ namespace WebDirectory.Services
         {
             return _unitOfWork.CompanyRepository.GetAll();
         }
+        public bool DeleteCompany(Company company)
+        {
+            if (company == null) 
+            _unitOfWork.CompanyRepository.Delete(company);
+            _unitOfWork.Save();
+            return true;
+        }
+        public bool DeleteById(int id)
+        {
+            var entity = _unitOfWork.CompanyRepository.FindById(id);
+            if (entity == null) return false;
+            _unitOfWork.CompanyRepository.Delete(entity);
+            _unitOfWork.Save();
+            return true;
+        }
     }
 }

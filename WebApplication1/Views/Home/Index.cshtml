@@ -33,42 +33,60 @@
                 <form class="subscription-table">
                     <div id="subscription-options">
                         <div class="subscription-column">
-                            <div class="subscription-header">Step 1: <span class="text-colorful">Identify</span></div>
+                            <div class="subscription-header"> <span class="text-colorful">Company Address</span></div>
                             <div class="subscription-body">
-                                You are a: <br />
-                                <div class="radio-buttons">
-                                    <input type="radio" name="subscriber" value="advertiser" />Advertiser<br />
-                                    <input type="radio" name="subscriber" value="local-business" />Local Business<br />
-                                    <input type="radio" name="subscriber" value="global-business" />Global Business<br />
-                                    <input type="radio" name="subscriber" value="other" />Other<br />
-                                </div>
+                                <br />
+                                <input type="text" class="text-input-grey" placeholder="Company Name" />
+                                <br />
+                                <input type="text" class="text-input-grey" placeholder="Founded Date" />
+                                <br />
+                                <input type="text" class="text-input-grey" placeholder="Company Website" />
+                                <br />
+
+                                <input type="text" class="text-input-grey" placeholder="Company Email" />
+                                <br />
+
+                                <input type="text" class="text-input-grey" placeholder="Company Email 2" />
+
+
                             </div>
                         </div>
                         <div class="subscription-column">
-                            <div class="subscription-header">Step 2: <span class="text-colorful">Register</span></div>
+                            <div class="subscription-header"> <span class="text-colorful">Basic</span></div>
                             <div class="subscription-body">
-                                Login details: <br />
-                                <input type="text" class="text-input-grey" placeholder="Email" /><br />
-                                <input type="text" class="text-input-grey" placeholder="Password" /><br />
-                                <input type="text" class="text-input-grey" placeholder="Repeat Password" />
+                                <br />
+                                @*@Html.DropDownList("CompanyTypeId", null, "Select CompanyType ", new { @class = "select-input-grey" })
+
+                        <br />
+                        @Html.DropDownList("UserId", null, "Select User Owner", new { @class = "select-input-grey" })
+                        @Html.ValidationMessageFor(model => model.UserOwnerId)*@
+                                <br />
+
+                                <input type="Phone" class="text-input-grey" placeholder="Telephone" />
+                                <br />
+
+                                <input type="text" class="text-input-grey" placeholder="number Of Employees" />
+                                <br />
+
+                                <input type="text" class="text-input-grey" placeholder="turnover" />
+
                             </div>
                         </div>
                         <div class="subscription-column">
-                            <div class="subscription-header">Step 3: <span class="text-colorful">Subscribe</span></div>
+                            <div class="subscription-header"> <span class="text-colorful">Logo</span></div>
                             <div class="subscription-body">
-                                Choose Package: <br />
-                                <div class="radio-buttons">
-                                    <input type="radio" name="subscription" value="silver" />Silver ($15/mo)<br />
-                                    <input type="radio" name="subscription" value="gold" />Gold ($25/mo)<br />
-                                    <input type="radio" name="subscription" value="platinum" />Platinum ($35/mo)
-                                </div>
+                                <br />
+
+
+                                <input class="text-input-grey" type="file" />
+
                             </div>
                         </div>
                     </div>
                     <div class="subscription-footer">
                         <div class="subscription-background">
                             <div class="subscription-button-wrapper">
-                                <input type="submit" class="button-colorful" value="SUBSCRIBE" name="subscribe" />
+                                <input type="submit" class="button-colorful" value="Register" name="CRegister" />
                             </div>
                         </div>
                     </div>

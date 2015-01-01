@@ -17,18 +17,25 @@ namespace WebApplication1.Controllers
         private ICompanyService _componyService;
         private IUserService _userService;
         private ICompanyTypeService _compnayTypeService;
+       
+        public CompanyController()
+        {
 
+        }
         public CompanyController(ICompanyService companyService, IUserService userService , ICompanyTypeService compnayTypeService)
         {
             _componyService = companyService;
             _userService = userService;
             _compnayTypeService = compnayTypeService;
         }
-
+        public ActionResult Index1()
+        {
+            return View();
+        }
         public ActionResult Index()
         {
-            var companyList = _componyService.GetAllCompanys();
-            return View(companyList);
+            //var companyList = _componyService.GetAllCompanys();
+            return View();
         }
         public ActionResult Details(int id)
         {
@@ -39,10 +46,10 @@ namespace WebApplication1.Controllers
                 // GET: /Company/Create
                 public ActionResult Create()
                 {
-                    ViewBag.UserId = new SelectList(_userService.GetAllUsers(), "UserId", "UserEmail");
-                    ViewBag.CompanyTypeId = new SelectList(_compnayTypeService.GetAllCompanyType(), "CompanyTypeId", "CompanyTypeName", 0);
-                    var company = new Company();
-                    return View(company);
+                    //ViewBag.UserId = new SelectList(_userService.GetAllUsers(), "UserId", "UserEmail");
+                    //ViewBag.CompanyTypeId = new SelectList(_compnayTypeService.GetAllCompanyType(), "CompanyTypeId", "CompanyTypeName", 0);
+                    //var company = new Company();
+                    return View();
                 }
 
                 //
@@ -68,10 +75,10 @@ namespace WebApplication1.Controllers
 
                 //
                 // GET: /Company/Edit/5
-                public ActionResult Edit(int id)
+                public ActionResult Edit()
                 {
-                    var compnay = _componyService.FindByID(id);
-                    return View(compnay);
+                    
+                    return View();
                 }
 
                 //

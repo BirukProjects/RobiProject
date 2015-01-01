@@ -35,13 +35,18 @@ namespace WebApplication1
                       "~/scripts/superfish.js",
                       "~/scripts/jquery.mobilemenu.min.js",
                       "~/scripts/jquery.placeholder.min.js",
-                      "~/scripts/scripts.js"));
+                      "~/scripts/locationpicker.jquery.js",
+                      "~/scripts/scripts.js",
+                      "~/scripts/angular.js",
+                      "~/scripts/image-crop.js"));
 
             
 
             bundles.Add(new StyleBundle("~/Content/css").Include(
                       "~/Content/bootstrap.css",
-                      "~/Content/site.css"));
+                      "~/Content/site.css",
+                      "~/Content/social/bootstrap-social.css",
+                      "~/Content/social/font-awesome.css"));
         }
     }
 }

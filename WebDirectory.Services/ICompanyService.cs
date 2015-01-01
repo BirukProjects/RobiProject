@@ -11,6 +11,10 @@ namespace WebDirectory.Services
     {
         bool AddCompany(Company company);
         bool EditCompany(Company company);
+        bool DeleteCompany(Company company);
+
+        bool DeleteById(int id);
+       
         Company FindByID(int id);
         List<Company> GetAllCompanys();
     }

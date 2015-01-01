@@ -1,147 +1,796 @@
-﻿
-@{
-    ViewBag.Title = "Index";
+﻿@{
+    ViewBag.Title = "Index1";
+    Layout = "~/Views/Shared/_Layout1.cshtml";
 }
+<link href="~/css/angular.treeview.css" rel="stylesheet" />
+<div class="company-tabs-wrapper">
+    <div class="zone-company-tabs zone clearfix">
 
-@{
-    ViewBag.Title = "SuperAdmin";
-}
-<div ng-app>
-    <div ng-controller="CategoryController">
-        <div class="company-tabs-wrapper">
-            <div class="zone-company-tabs zone clearfix">
+        <div class="company-tabs-container container-24">
 
-                <div class="company-tabs-container container-24">
+            <ul id="company-tabs-active" class="company-tabs">
+                <li class="active">
+                    <a class="company-tabs-page" href="#">CATEGORY</a>
+                </li>
+                <li>
+                    <a class="company-tabs-portfolio-4" href="#">USERS</a>
+                </li>
+                <li>
+                    <a class="company-tabs-events" href="#">EVENTS</a>
+                </li>
+                <li>
+                    <a class="company-tabs-events-tabs" href="#">EVENTS (WITH TABS)</a>
+                </li>
+                <li>
+                    <a class="company-tabs-team" href="#">TEAM</a>
+                </li>
+                <li>
+                    <a class="company-tabs-products" href="#">PRODUCTS &amp; SERVICES</a>
+                </li>
+                <li>
+                    <a class="company-tabs-blog" href="#">BLOG</a>
+                </li>
 
-                    <ul id="company-tabs-active" class="company-tabs">
-                        <li class="active">
-                            <a class="company-tabs-page" href="#">CATEGORIES</a>
-                        </li>
-                        @*<li>
-                                <a class="company-tabs-portfolio-4" href="#">USER</a>
-                            </li>*@
-                        <li>
-                            <a class="company-tabs-events" href="#">USERS</a>
-                        </li>
+            </ul>
 
-                        <li>
-                            <a class="company-tabs-products" href="#">PRODUCTS &amp; SERVICES</a>
-                        </li>
-                        <li>
-                            <a class="company-tabs-blog" href="#">BLOG</a>
-                        </li>
-                        <li>
-                            <a class="company-tabs-contact" href="#">CONTACT</a>
-                        </li>
-                    </ul>
+        </div><!-- end of .company-tabs-container -->
 
-                </div><!-- end of .company-tabs-container -->
+    </div><!-- end of .zone-company-tabs -->
+</div><!-- end of .company-tabs-wrapper -->
+<div data-ng-app="app" id="ng-app" lang="sv">
+    <div class="company-content-wrapper">
+        <div class="zone-company-content zone clearfix">
 
-            </div><!-- end of .zone-company-tabs -->
-        </div><!-- end of .company-tabs-wrapper -->
+            <div id="company-inner-container" class="company-inner-container container-24">
 
-        <div class="company-content-wrapper">
-            <div class="zone-company-content zone clearfix">
+                <div id="company-tabs-page" class="company-tabs-content">
 
-                <div id="company-inner-container" class="company-inner-container container-24">
 
-                    <div id="company-tabs-page" class="company-tabs-content">
 
-                        @*<div id="div_list">
-                            <button id="create" class="btn btn-default"> Create </button>
-                            List Of Catagories
-                            </div>
-                            <div id="div_create" style="display:none1">
-                            @Html.Partial("Create", new Data.Models.CategoryArea())
-                            </div>*@
 
-                        <div class="company-sidebar-container container-12">
-                            <div class="sidebar-search block ">
-                                <form id="sidebar-search">
-                                    <input type="text" class="sidebar-search-input" placeholder="Search...">
-                                    <input type="submit" class="sidebar-search-submit" name="submit" value="" />
-                                </form>
-                            </div>
+                        <div data-ng-controller="CategoryController">
+                            <div class="company-sidebar-container container-8">
+                                <div class="products-list block">
+                                    <div class="block-title">
+                                        <h3>Catgeory List</h3>
+                                    </div>
+                                    <ul class="list-root">
+                                        <li data-ng-repeat="category in categorys" ng-init="visible=true" ng-click="visible=!visible">
+                                            <a href="">{{category.category1}}</a>
+                                            <ul ng-show="visible">
 
-                            <div class="categories block">
-                                <div class="block-title">
-                                    <h3>Categories</h3>
+                                                <li data-ng-repeat="categoryA in category.categoryAreas " ng-click="visible=visible"><a href="#"><div>{{categoryA.categoryName}}</div></a></li>
+                                            </ul>
+                                        </li>
+                                    </ul>
+
+
                                 </div>
-                                <div class="table-responsive">
-                                    <table id="" class="table table-hover">
-                                        <thead>
-                                            <tr>
+                            </div>
+                            <div class="company-content-container container-16">
+                                <br />
+                                <strong class="error">{{ error }}</strong>
+                                <div class="our-directory block">
+                                    <p data-ng-hide="addModeCat"><a data-ng-click="toggleAddCat()" href="javascript:;" class="button-2-colorful">Create New category</a></p>
+                                    <form name="addCategory" data-ng-show="addModeCat" class="comment-message-form">
 
-                                                <th>CategoryID</th>
-                                                <th>Area</th>
-                                                <th>Category</th>
-                                                <th>Subcategory</th>
+                                        <div class="comment-message">
+                                            <div class="comment-message-title">
+                                                <span class="text-colorful">Add New Category</span>
+                                            </div>
 
-                                            </tr>
-                                        </thead>
-                                        <tbody>
-                                            <tr ng-repeat="category in categories" class="">
 
-                                                <td>{{category.CategoryID}}</td>
-                                                <td>{{category.Area}}</td>
-                                                <td>{{category.Category1}}</td>
-                                                <td>{{category.Subcategory}}</td>
-                                            </tr>
-                                        </tbody>
+                                            <label>Category Name:</label><input type="text" class="text-input-grey" data-ng-model="newCategory.category1" required />
+                                            <label>Category Description:</label><input type="text" class="text-input-grey" data-ng-model="newCategory.Subcategory" required />
+                                            <br />
+                                            <span class="error" data-ng-show="addCategory.$error.Subcategory">Invalid Data!</span>
+                                            <br />
+                                            <input type="submit" value="AddCat" data-ng-click="addCat()" data-ng-disabled="!addCategory.$valid" class="button-2-colorful" />
+                                            <input type="button" value="Cancel" data-ng-click="toggleAddCat()" class="button-2-colorful" />
+                                            <br />
+                                            <br />
+                                        </div>
+                                    </form>
+                                </div>
+                                <table class="table table-bordered table-hover table-responsive" >
+                                    <tr>
+                                        <th>#</th>
+                                        <th>Category</th>
+                                        <th>Description</th>
+                                        <th></th>
+                                    </tr>
+                                    <tr>
+                                        <td></td>
+                                        <td>
+                                            <input type="text" class="sidebar-search-input" placeholder="Search..." data-ng-model="search.category1" />
+                                        </td>
+                                        <td>
+                                            <input type="text" class="sidebar-search-input" placeholder="Search..." data-ng-model="search.subcategory" />
+                                        </td>
+                                        <td></td>
+                                    </tr>
+
+                                    <tr data-ng-repeat="category in categorys | filter:search">
+                                        <td><strong data-ng-hide="category.editMode" ng-hide="true">{{ category.CategoryID }}</strong></td>
+                                        <td>
+                                            <p data-ng-hide="category.editModeCat">{{ category.category1 }}</p>
+                                            <p data-ng-show="category.editModeCat">
+                                                <input type="text" data-ng-model="category.category1" />
+                                            </p>
+                                        </td>
+                                        <td>
+                                            <p data-ng-hide="category.editModeCat">{{ category.subcategory }}</p>
+                                            <input data-ng-show="category.editModeCat" type="text" data-ng-model="category.subcategory" />
+                                        </td>
+                                        <td>
+                                            <p data-ng-hide="category.editModeCat"><a data-ng-click="toggleEditCat(category)" href="javascript:;">Edit</a> | <a data-ng-click="delcategory(category)" href="javascript:;">Delete</a></p>
+                                            <p data-ng-show="category.editModeCat"><a data-ng-click="saveCat(category)" href="javascript:;">Save</a> | <a data-ng-click="toggleEditCat(category)" href="javascript:;">Cancel</a></p>
+                                        </td>
+                                    </tr>
+                                </table>
+                                <hr />
+                                <div data-ng-controller="CategoryAreaController">
+
+                                    <br />
+                                    <strong class="error">{{ error }}</strong>
+                                    <div class="our-directory block">
+                                        <p data-ng-hide="addMode"><a data-ng-click="toggleAdd()" href="javascript:;" class="button-2-colorful">Create New categoryArea</a></p>
+                                        <form name="addCategoryArea" data-ng-show="addMode" class="comment-message-form">
+
+                                            <div class="comment-message">
+                                                <div class="comment-message-title">
+                                                    <span class="text-colorful">Add New CategoryArea</span>
+                                                </div>
+
+
+                                                <label>Category Name </label><input type="text" class="text-input-grey" data-ng-model="newCategoryArea.categoryName" required />
+                                                <br />
+                                                <select data-ng-model="newCategoryArea.categoryID" class="select-input-grey" data-ng-options="c.categoryID as c.category1 for c in categorys">
+                                                    <option value="">-- Select Main Category --</option>
+                                                </select>
+                                                <br />
+                                                <label>Icon Path: </label><input type="text" class="text-input-grey" data-ng-model="newCategoryArea.iconPath" required />
+                                                <label>Approved:</label><input type="checkbox" data-ng-model="newCategoryArea.approved" required />
+                                                <br />
+                                                <div class="notification-general">
+                                                    <div class="notification-inner">
+                                                        <span class="error"></span>
+                                                        <a class="close" href="#"></a>
+                                                    </div>
+                                                </div>
+
+                                                <br />
+                                                <input type="submit" value="Add" data-ng-click="add()" data-ng-disabled="!addCategoryArea.$valid" class="button-2-colorful" />
+                                                <input type="button" value="Cancel" data-ng-click="toggleAdd()" class="button-2-colorful" />
+                                                <br />
+                                                <br />
+                                            </div>
+                                        </form>
+                                    </div>
+                                    <table class="table table-bordered table-hover table-responsive" >
+                                        <tr>
+                                            <th>#</th>
+                                            <th>CategoryArea</th>
+                                            <th>CategoryName</th>
+                                            <th>Icon</th>
+                                            <th></th>
+                                        </tr>
+                                        <tr>
+                                            <td></td>
+                                            <td>
+                                                <input type="text" class="sidebar-search-input" placeholder="Search..." data-ng-model="search.categoryArea1" />
+                                            </td>
+                                            <td>
+                                                <input type="text" class="sidebar-search-input" placeholder="Search..." data-ng-model="search.subcategoryArea" />
+                                            </td>
+                                            <td></td>
+                                        </tr>
+
+                                        <tr data-ng-repeat="categoryArea in categoryAreas | filter:search">
+                                            <td><strong data-ng-hide="categoryArea.editMode" ng-hide="true">{{ categoryArea.categoryAreaId }}</strong></td>
+                                            <td>
+                                                <p data-ng-hide="categoryArea.editMode">{{ categoryArea.categoryName }}</p>
+                                                <p data-ng-show="categoryArea.editMode">
+                                                    <input type="text" data-ng-model="categoryArea.categoryName" />
+                                                </p>
+                                            </td>
+                                            <td>
+                                                <p data-ng-hide="categoryArea.editMode">{{ categoryArea.approved }}</p>
+                                                <input data-ng-show="categoryArea.editMode" type="text" data-ng-model="categoryArea.approved" />
+                                            </td>
+                                            <td>
+                                                <p data-ng-hide="categoryArea.editMode">{{ categoryArea.IconPath }}</p>
+                                                <input data-ng-show="categoryArea.editMode" type="text" data-ng-model="categoryArea.IconPath" />
+                                            </td>
+                                            <td>
+                                                <p data-ng-hide="categoryArea.editMode"><a data-ng-click="toggleEdit(categoryArea)" href="javascript:;">Edit</a> | <a data-ng-click="delcategoryArea(categoryArea)" href="javascript:;">Delete</a></p>
+                                                <p data-ng-show="categoryArea.editMode"><a data-ng-click="save(categoryArea)" href="javascript:;">Save</a> | <a data-ng-click="toggleEdit(categoryArea)" href="javascript:;">Cancel</a></p>
+                                            </td>
+                                        </tr>
                                     </table>
+                                    <hr />
                                 </div>
-                            </div><!-- end of .company-sidebar-container -->
+                            </div>
 
-                        </div>
-                    </div>
+
+                    </div><!-- end of .company-content-container -->
+
                 </div>
 
                 <div id="company-tabs-portfolio-4" class="company-tabs-content">
-                    <div class="portfolio-top-container container-24">
+
+
+
+                    <div class="portfolio-container container-18">
+
+
+
+
+
+
+                        <div data-ng-controller="UserController">
+
+                            <br />
+                            <strong class="error">{{ error }}</strong>
+                            <div class="our-directory block">
+                                <p data-ng-hide="addMode"><a data-ng-click="toggleAdd()" href="javascript:;" class="button-2-colorful">Create New user</a></p>
+                                <form name="addUser" data-ng-show="addMode" class="comment-message-form">
+
+                                    <div class="comment-message">
+                                        <div class="comment-message-title">
+                                            <span class="text-colorful">Add New User</span>
+                                        </div>
+
+
+                                        <label>Name:</label><input type="text" class="text-input-grey" data-ng-model="newUser.userName" required />
+                                        <label>Email:</label><input type="email" class="text-input-grey" data-ng-model="newUser.email" required />
+                                        <br />
+                                        <span class="error" data-ng-show="addUser.$error.email">Invalid Email format!</span>
+                                        <br />
+                                        <input type="submit" value="Add" data-ng-click="add()" data-ng-disabled="!addUser.$valid" class="button-2-colorful" />
+                                        <input type="button" value="Cancel" data-ng-click="toggleAdd()" class="button-2-colorful" />
+                                        <br />
+                                        <br />
+                                    </div>
+                                </form>
+                            </div>
+                            <table class="table table-bordered table-hover" style="width: 800px">
+                                <tr>
+                                    <th>#</th>
+                                    <th>Name</th>
+                                    <th>Email</th>
+                                    <th></th>
+                                </tr>
+                                <tr>
+                                    <td></td>
+                                    <td>
+                                        <input type="text" class="sidebar-search-input" placeholder="Search..." data-ng-model="search.userName" />
+                                    </td>
+                                    <td>
+                                        <input type="text" class="sidebar-search-input" placeholder="Search..." data-ng-model="search.email" />
+                                    </td>
+                                    <td></td>
+                                </tr>
+
+                                <tr data-ng-repeat="user in users | filter:search">
+                                    <td><strong data-ng-hide="user.editMode" ng-hide="true">{{ user.id }}</strong></td>
+                                    <td>
+                                        <p data-ng-hide="user.editMode">{{ user.userName }}</p>
+                                        <p data-ng-show="user.editMode">
+                                            <input type="text" data-ng-model="user.userName" />
+                                        </p>
+                                    </td>
+                                    <td>
+                                        <p data-ng-hide="user.editMode">{{ user.email }}</p>
+                                        <input data-ng-show="user.editMode" type="text" data-ng-model="user.email" />
+                                    </td>
+                                    <td>
+                                        <p data-ng-hide="user.editMode"><a data-ng-click="toggleEdit(user)" href="javascript:;">Edit</a> | <a data-ng-click="deluser(user)" href="javascript:;">Delete</a></p>
+                                        <p data-ng-show="user.editMode"><a data-ng-click="save(user)" href="javascript:;">Save</a> | <a data-ng-click="toggleEdit(user)" href="javascript:;">Cancel</a></p>
+                                    </td>
+                                </tr>
+                            </table>
+                            <hr />
+                        </div>
+
+
 
 
                     </div>
+
+
+
+                    <div class="portfolio-pagination-container container-24">
+
+                        <div class="portfolio-pagination block">
+                            <div class="pagination">
+                                <div class="pagination-buttons">
+                                    <a href="#" class="current-page">1</a>
+                                    <a href="#">2</a>
+                                    <a href="#">3</a>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+
                 </div>
 
+                <div id="company-tabs-portfolio-3" class="company-tabs-content">
+
+                    <div class="portfolio-top-container container-24">
+
+                        <div class="portfolio-selection block">
+                            <div id="portfolio-filter" class="portfolio-filter-buttons">
+                                <input id="all" type="button" value="All" class="button-2-colorful current" />
+                                <input id="creative" type="button" value="Creative" class="button-2-colorful" />
+                                <input id="development" type="button" value="Development" class="button-2-colorful" />
+                                <input id="other" type="button" value="Other" class="button-2-colorful" />
+                            </div>
+                            <div class="portfolio-layout-links">
+                                <a class="button-2-colorful portfolio-1" href="company-tabs-portfolio-1.html"><div class="icon"></div></a>
+                                <a class="button-2-colorful portfolio-2" href="company-tabs-portfolio-2.html"><div class="icon"></div></a>
+                                <a class="button-2-colorful portfolio-3 current" href="company-tabs-portfolio-3.html"><div class="icon"></div></a>
+                                <a class="button-2-colorful portfolio-4" href="company-tabs-portfolio-4.html"><div class="icon"></div></a>
+                            </div>
+                        </div>
+
+                    </div>
+
+                    <div class="portfolio-container container-8">
+
+                        <div class="portfolio-listing-small creative block">
+                            <div class="portfolio-image">
+                                <img src="images/content/sunglasses.jpg" alt="" />
+                            </div>
+                            <div class="portfolio-title">Project title goes here.</div>
+                            <div class="portfolio-description clearfix">
+                                <div class="portfolio-category text-colorful">Category Name</div>
+                                <a href="single-project.html" class="portfolio-link"></a>
+                                <a href="images/content/sunglasses.jpg" class="portfolio-enlarge"></a>
+                            </div>
+                        </div>
+
+                        <div class="portfolio-listing-small other block">
+                            <div class="portfolio-image">
+                                <img src="images/content/calendar.jpg" alt="" />
+                            </div>
+                            <div class="portfolio-title">Project title goes here.</div>
+                            <div class="portfolio-description clearfix">
+                                <div class="portfolio-category text-colorful">Category Name</div>
+                                <a href="single-project.html" class="portfolio-link"></a>
+                                <a href="images/content/calendar.jpg" class="portfolio-enlarge"></a>
+                            </div>
+                        </div>
+
+                        <div class="portfolio-listing-small development block">
+                            <div class="portfolio-image">
+                                <img src="images/content/nest.jpg" alt="" />
+                            </div>
+                            <div class="portfolio-title">Project title goes here.</div>
+                            <div class="portfolio-description clearfix">
+                                <div class="portfolio-category text-colorful">Category Name</div>
+                                <a href="single-project.html" class="portfolio-link"></a>
+                                <a href="images/content/nest.jpg" class="portfolio-enlarge"></a>
+                            </div>
+                        </div>
+
+                    </div>
+
+                    <div class="portfolio-container container-8">
+
+                        <div class="portfolio-listing-small creative block">
+                            <div class="portfolio-image">
+                                <img src="images/content/nest.jpg" alt="" />
+                            </div>
+                            <div class="portfolio-title">Project title goes here.</div>
+                            <div class="portfolio-description clearfix">
+                                <div class="portfolio-category text-colorful">Category Name</div>
+                                <a href="single-project.html" class="portfolio-link"></a>
+                                <a href="images/content/nest.jpg" class="portfolio-enlarge"></a>
+                            </div>
+                        </div>
+
+                        <div class="portfolio-listing-small development block">
+                            <div class="portfolio-image">
+                                <img src="images/content/sunglasses.jpg" alt="" />
+                            </div>
+                            <div class="portfolio-title">Project title goes here.</div>
+                            <div class="portfolio-description clearfix">
+                                <div class="portfolio-category text-colorful">Category Name</div>
+                                <a href="single-project.html" class="portfolio-link"></a>
+                                <a href="images/content/sunglasses.jpg" class="portfolio-enlarge"></a>
+                            </div>
+                        </div>
+
+                        <div class="portfolio-listing-small other block">
+                            <div class="portfolio-image">
+                                <img src="images/content/calendar.jpg" alt="" />
+                            </div>
+                            <div class="portfolio-title">Project title goes here.</div>
+                            <div class="portfolio-description clearfix">
+                                <div class="portfolio-category text-colorful">Category Name</div>
+                                <a href="single-project.html" class="portfolio-link"></a>
+                                <a href="images/content/calendar.jpg" class="portfolio-enlarge"></a>
+                            </div>
+                        </div>
+
+                    </div>
+
+                    <div class="portfolio-container container-8">
+
+                        <div class="portfolio-listing-small development block">
+                            <div class="portfolio-image">
+                                <img src="images/content/calendar.jpg" alt="" />
+                            </div>
+                            <div class="portfolio-title">Project title goes here.</div>
+                            <div class="portfolio-description clearfix">
+                                <div class="portfolio-category text-colorful">Category Name</div>
+                                <a href="single-project.html" class="portfolio-link"></a>
+                                <a href="images/content/calendar.jpg" class="portfolio-enlarge"></a>
+                            </div>
+                        </div>
+
+                        <div class="portfolio-listing-small other block">
+                            <div class="portfolio-image">
+                                <img src="images/content/nest.jpg" alt="" />
+                            </div>
+                            <div class="portfolio-title">Project title goes here.</div>
+                            <div class="portfolio-description clearfix">
+                                <div class="portfolio-category text-colorful">Category Name</div>
+                                <a href="single-project.html" class="portfolio-link"></a>
+                                <a href="images/content/nest.jpg" class="portfolio-enlarge"></a>
+                            </div>
+                        </div>
+
+                        <div class="portfolio-listing-small creative block">
+                            <div class="portfolio-image">
+                                <img src="images/content/sunglasses.jpg" alt="" />
+                            </div>
+                            <div class="portfolio-title">Project title goes here.</div>
+                            <div class="portfolio-description clearfix">
+                                <div class="portfolio-category text-colorful">Category Name</div>
+                                <a href="single-project.html" class="portfolio-link"></a>
+                                <a href="images/content/sunglasses.jpg" class="portfolio-enlarge"></a>
+                            </div>
+                        </div>
+
+                    </div>
+
+                    <div class="portfolio-pagination-container container-24">
+
+                        <div class="portfolio-pagination block">
+                            <div class="pagination">
+                                <div class="pagination-buttons">
+                                    <a href="#" class="current-page">1</a>
+                                    <a href="#">2</a>
+                                    <a href="#">3</a>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+
+                </div>
+
+                <div id="company-tabs-portfolio-2" class="company-tabs-content">
+
+                    <div class="portfolio-top-container container-24">
+
+                        <div class="portfolio-selection block">
+                            <div id="portfolio-filter" class="portfolio-filter-buttons">
+                                <input id="all" type="button" value="All" class="button-2-colorful current" />
+                                <input id="creative" type="button" value="Creative" class="button-2-colorful" />
+                                <input id="development" type="button" value="Development" class="button-2-colorful" />
+                                <input id="other" type="button" value="Other" class="button-2-colorful" />
+                            </div>
+                            <div class="portfolio-layout-links">
+                                <a class="button-2-colorful portfolio-1" href="company-tabs-portfolio-1.html"><div class="icon"></div></a>
+                                <a class="button-2-colorful portfolio-2 current" href="company-tabs-portfolio-2.html"><div class="icon"></div></a>
+                                <a class="button-2-colorful portfolio-3" href="company-tabs-portfolio-3.html"><div class="icon"></div></a>
+                                <a class="button-2-colorful portfolio-4" href="company-tabs-portfolio-4.html"><div class="icon"></div></a>
+                            </div>
+                        </div>
+
+                    </div>
+
+                    <div class="portfolio-container container-12">
+
+                        <div class="portfolio-listing creative development block">
+                            <div class="portfolio-image">
+                                <img src="images/content/sunglasses.jpg" alt="" />
+                            </div>
+                            <div class="portfolio-description clearfix">
+                                <div class="portfolio-title-category">
+                                    <div class="portfolio-title">Project title goes here.</div>
+                                    <div class="portfolio-category text-colorful">Category Name</div>
+                                </div>
+                                <a href="single-project.html" class="portfolio-link"></a>
+                                <a href="images/content/sunglasses.jpg" class="portfolio-enlarge"></a>
+                            </div>
+                        </div>
+
+                        <div class="portfolio-listing creative other block">
+                            <div class="portfolio-image">
+                                <img src="images/content/nest.jpg" alt="" />
+                            </div>
+                            <div class="portfolio-description clearfix">
+                                <div class="portfolio-title-category">
+                                    <div class="portfolio-title">Project title goes here.</div>
+                                    <div class="portfolio-category text-colorful">Category Name</div>
+                                </div>
+                                <a href="single-project.html" class="portfolio-link"></a>
+                                <a href="images/content/nest.jpg" class="portfolio-enlarge"></a>
+                            </div>
+                        </div>
+
+                        <div class="portfolio-listing development other block">
+                            <div class="portfolio-image">
+                                <img src="images/content/calendar.jpg" alt="" />
+                            </div>
+                            <div class="portfolio-description clearfix">
+                                <div class="portfolio-title-category">
+                                    <div class="portfolio-title">Project title goes here.</div>
+                                    <div class="portfolio-category text-colorful">Category Name</div>
+                                </div>
+                                <a href="single-project.html" class="portfolio-link"></a>
+                                <a href="images/content/calendar.jpg" class="portfolio-enlarge"></a>
+                            </div>
+                        </div>
+
+                    </div>
+
+                    <div class="portfolio-container container-12">
+
+                        <div class="portfolio-listing development other block">
+                            <div class="portfolio-image">
+                                <img src="images/content/calendar.jpg" alt="" />
+                            </div>
+                            <div class="portfolio-description clearfix">
+                                <div class="portfolio-title-category">
+                                    <div class="portfolio-title">Project title goes here.</div>
+                                    <div class="portfolio-category text-colorful">Category Name</div>
+                                </div>
+                                <a href="single-project.html" class="portfolio-link"></a>
+                                <a href="images/content/calendar.jpg" class="portfolio-enlarge"></a>
+                            </div>
+                        </div>
+
+                        <div class="portfolio-listing creative development block">
+                            <div class="portfolio-image">
+                                <img src="images/content/sunglasses.jpg" alt="" />
+                            </div>
+                            <div class="portfolio-description clearfix">
+                                <div class="portfolio-title-category">
+                                    <div class="portfolio-title">Project title goes here.</div>
+                                    <div class="portfolio-category text-colorful">Category Name</div>
+                                </div>
+                                <a href="single-project.html" class="portfolio-link"></a>
+                                <a href="images/content/sunglasses.jpg" class="portfolio-enlarge"></a>
+                            </div>
+                        </div>
+
+                        <div class="portfolio-listing creative other block">
+                            <div class="portfolio-image">
+                                <img src="images/content/nest.jpg" alt="" />
+                            </div>
+                            <div class="portfolio-description clearfix">
+                                <div class="portfolio-title-category">
+                                    <div class="portfolio-title">Project title goes here.</div>
+                                    <div class="portfolio-category text-colorful">Category Name</div>
+                                </div>
+                                <a href="single-project.html" class="portfolio-link"></a>
+                                <a href="images/content/nest.jpg" class="portfolio-enlarge"></a>
+                            </div>
+                        </div>
+
+                    </div>
+
+                    <div class="portfolio-pagination-container container-24">
+
+                        <div class="portfolio-pagination block">
+                            <div class="pagination">
+                                <div class="pagination-buttons">
+                                    <a href="#" class="current-page">1</a>
+                                    <a href="#">2</a>
+                                    <a href="#">3</a>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+
+                </div>
+
+                <div id="company-tabs-portfolio-1" class="company-tabs-content">
+
+                    <div class="portfolio-top-container container-24">
+
+                        <div class="portfolio-selection block">
+                            <div id="portfolio-filter" class="portfolio-filter-buttons">
+                                <input id="all" type="button" value="All" class="button-2-colorful current" />
+                                <input id="creative" type="button" value="Creative" class="button-2-colorful" />
+                                <input id="development" type="button" value="Development" class="button-2-colorful" />
+                                <input id="other" type="button" value="Other" class="button-2-colorful" />
+                            </div>
+                            <div class="portfolio-layout-links">
+                                <a class="button-2-colorful portfolio-1 current" href="company-tabs-portfolio-1.html"><div class="icon"></div></a>
+                                <a class="button-2-colorful portfolio-2" href="company-tabs-portfolio-2.html"><div class="icon"></div></a>
+                                <a class="button-2-colorful portfolio-3" href="company-tabs-portfolio-3.html"><div class="icon"></div></a>
+                                <a class="button-2-colorful portfolio-4" href="company-tabs-portfolio-4.html"><div class="icon"></div></a>
+                            </div>
+                        </div>
+
+                    </div>
+
+                    <div class="portfolio-container container-24">
+
+                        <div class="portfolio-listing block">
+                            <div class="portfolio-image">
+                                <img src="images/content/sunglasses.jpg" alt="" />
+                            </div>
+                            <div class="portfolio-description development clearfix">
+                                <div class="portfolio-title-category">
+                                    <div class="portfolio-title">Project title goes here, here and here. Lorem ipsum dolor sit amet.</div>
+                                    <div class="portfolio-category text-colorful">Category Name</div>
+                                </div>
+                                <a href="single-project.html" class="portfolio-link"></a>
+                                <a href="images/content/sunglasses.jpg" class="portfolio-enlarge"></a>
+                            </div>
+                        </div>
+
+                        <div class="portfolio-listing creative block">
+                            <div class="portfolio-image">
+                                <img src="images/content/nest.jpg" alt="" />
+                            </div>
+                            <div class="portfolio-description clearfix">
+                                <div class="portfolio-title-category">
+                                    <div class="portfolio-title">Project title goes here, here and here. Lorem ipsum dolor sit amet.</div>
+                                    <div class="portfolio-category text-colorful">Category Name</div>
+                                </div>
+                                <a href="single-project.html" class="portfolio-link"></a>
+                                <a href="images/content/nest.jpg" class="portfolio-enlarge"></a>
+                            </div>
+                        </div>
+
+                        <div class="portfolio-listing development creative block">
+                            <div class="portfolio-image">
+                                <img src="images/content/calendar.jpg" alt="" />
+                            </div>
+                            <div class="portfolio-description clearfix">
+                                <div class="portfolio-title-category">
+                                    <div class="portfolio-title">Project title goes here, here and here. Lorem ipsum dolor sit amet.</div>
+                                    <div class="portfolio-category text-colorful">Category Name</div>
+                                </div>
+                                <a href="single-project.html" class="portfolio-link"></a>
+                                <a href="images/content/calendar.jpg" class="portfolio-enlarge"></a>
+                            </div>
+                        </div>
+
+                        <div class="portfolio-listing development other block">
+                            <div class="portfolio-image">
+                                <img src="images/content/nest.jpg" alt="" />
+                            </div>
+                            <div class="portfolio-description clearfix">
+                                <div class="portfolio-title-category">
+                                    <div class="portfolio-title">Project title goes here, here and here. Lorem ipsum dolor sit amet.</div>
+                                    <div class="portfolio-category text-colorful">Category Name</div>
+                                </div>
+                                <a href="single-project.html" class="portfolio-link"></a>
+                                <a href="images/content/nest.jpg" class="portfolio-enlarge"></a>
+                            </div>
+                        </div>
+
+                        <div class="portfolio-listing other block">
+                            <div class="portfolio-image">
+                                <img src="images/content/sunglasses.jpg" alt="" />
+                            </div>
+                            <div class="portfolio-description clearfix">
+                                <div class="portfolio-title-category">
+                                    <div class="portfolio-title">Project title goes here, here and here. Lorem ipsum dolor sit amet.</div>
+                                    <div class="portfolio-category text-colorful">Category Name</div>
+                                </div>
+                                <a href="single-project.html" class="portfolio-link"></a>
+                                <a href="images/content/sunglasses.jpg" class="portfolio-enlarge"></a>
+                            </div>
+                        </div>
+
+                    </div>
+
+                    <div class="portfolio-pagination-container container-24">
+
+                        <div class="portfolio-pagination block">
+                            <div class="pagination">
+                                <div class="pagination-buttons">
+                                    <a href="#" class="current-page">1</a>
+                                    <a href="#">2</a>
+                                    <a href="#">3</a>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+
+                </div>
 
                 <div id="company-tabs-events" class="company-tabs-content">
 
-                    <div class="company-content-container container-16" @*ng-controller="UsersController"*@>
-                        <div class="sidebar-search block ">
-                            <form id="sidebar-search">
-                                <input type="text" class="sidebar-search-input" ng-model="UserSearch" placeholder="Search..." >
-                                <input type="submit" class="sidebar-search-submit" name="submit" value="" />
-                            </form>
+                    <div class="company-content-container container-16">
+
+                        <div class="company-tabs-single-event block">
+                            <div class="event-image">
+                                <img src="images/content/calendar.jpg" alt="" />
+                            </div>
+                            <div class="event-name">New Era of Startups - conference</div>
+                            <div class="event-location">8-9 August, 2013    Rome, Italy    Colliseum</div>
                         </div>
-                      
-                        <div class="block-title">
-                            <h3>Users</h3>
+
+                        <div class="separator"></div>
+
+                        <div class="description-text block">
+                            <div class="block-title-2">
+                                <h3>Event Description</h3>
+                            </div>
+                            <div class="description-text-content">
+                                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Proin nibh augue, suscipit a, scelerisque sed, lacinia in, mi. Cras vel lorem. Etiam pellentesque aliquet tellus. Phasellus congue lacus eget neque. Phasellus ornare, ante vitae consectetuer consequat, purus sapien ultricies dolor, et mollis pede metus eget nisi. Phasellus congue lacus eget neque.</p>
+                                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Proin nibh augue, suscipit a, scelerisque sed, lacinia in, mi. Cras vel lorem. Etiam pellentesque aliquet tellus. Phasellus congue lacus eget neque. Phasellus ornare, ante vitae consectetuer consequat, purus sapien ultricies dolor, et mollis pede metus eget nisi. Phasellus congue lacus eget neque. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Proin nibh augue, suscipit a, scelerisque sed, lacinia in, mi. Cras vel lorem. Etiam pellentesque aliquet tellus. Phasellus congue lacus eget neque. Phasellus ornare, ante vitae consectetuer consequat, purus sapien ultricies dolor, et mollis pede metus eget nisi.</p>
+                            </div>
                         </div>
-                       <div class="table-responsive">
-                            <table id="" class="table table-hover">
-                                <thead>
-                                    <tr>
 
-                                        <th>User Name</th>
-                                        <th>User Email</th>
-                                        <th>Action</th>
+                        <div class="separator"></div>
 
+                        <div class="tags block">
+                            <div class="block-title-2">
+                                <h3>Keywords</h3>
+                            </div>
+                            <a href="#" class="tag-grey">Advertisement</a>
+                            <a href="#" class="tag-grey">Creation</a>
+                            <a href="#" class="tag-grey">SEO</a>
+                            <a href="#" class="tag-grey">SEM</a>
+                            <a href="#" class="tag-grey">Development</a>
+                            <a href="#" class="tag-grey">Web Design</a>
+                            <a href="#" class="tag-grey">Art</a>
+                            <a href="#" class="tag-grey">Programming</a>
+                            <a href="#" class="tag-grey">Strategy</a>
+                            <a href="#" class="tag-grey">Marketing</a>
+                        </div>
 
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    <tr ng-repeat="user1 in users| filter:UserSearch">
+                        <div class="separator"></div>
 
-                                        <td>{{user1.UserName}}</td>
-                                        <td>{{user1.UserEmail}}</td>
-                                        <td>
-                                            @Html.ActionLink("Edit", "Edit", new {@class="button-2-colorful submit" /* id=item.PrimaryKey */ }) |
-                                            @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
-                                            @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
-                                        </td>
-                                    </tr>
-                                </tbody>
-                            </table>
+                        <div class="comments block">
+                            <div class="block-title-2">
+                                <h3>2 Comments:</h3>
+                            </div>
+                            <div class="review-messages">
+                                <div class="review first">
+                                    <div class="review-author">
+                                        <span class="author">John</span> - <span class="date">April 10, 2013 at 7:34 pm</span>
+                                    </div>
+                                    <div class="review-text">
+                                        Phasellus congue lacus eget neque. Phasellus ornare, ante vitae consectetuer consequat, purus sapien ultricies dolor, et mollis pede metus eget nisi.
+                                    </div>
+                                </div>
+                                <div class="review last">
+                                    <div class="review-author">
+                                        <span class="author">John</span> - <span class="date">April 10, 2013 at 7:34 pm</span>
+                                    </div>
+                                    <div class="review-text">
+                                        Phasellus congue lacus eget neque. Phasellus ornare, ante vitae consectetuer consequat, purus sapien ultricies dolor, et mollis pede metus eget nisi.
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="comment-message">
+                                <div class="comment-message-title">
+                                    Leave a <span class="text-colorful">Comment</span>
+                                </div>
+                                <form class="comment-message-form">
+                                    <input type="text" class="text-input-grey name" placeholder="Name *" />
+                                    <input type="text" class="text-input-grey email" placeholder="Email *" />
+                                    <input type="text" class="text-input-grey website" placeholder="Website" />
+                                    <textarea class="text-input-grey comment-message-main" placeholder="Your Comments Here"></textarea>
+                                    <input type="submit" class="button-2-colorful to-right" value="Post Comment" name="comment" />
+                                </form>
+                            </div>
                         </div>
 
                     </div><!-- end of .company-content-container -->
@@ -353,7 +1002,7 @@
 
                         <div class="company-tabs-single-event block">
                             <div class="event-image">
-                                <img src="~/images/content/calendar.jpg" alt="" />
+                                <img src="images/content/calendar.jpg" alt="" />
                             </div>
                             <div class="event-name">New Era of Startups - conference</div>
                             <div class="event-location">8-9 August, 2013    Rome, Italy    Colliseum</div>
@@ -665,7 +1314,7 @@
                         <div class="company-employee-info block">
                             <div class="company-employee-info-social">
                                 <div class="employee-photo">
-                                    <img src="~/images/content/crayons.png" alt="" />
+                                    <img src="images/content/crayons.png" alt="" />
                                 </div>
                                 <a href="http://www.facebook.com" class="facebook"></a>
                                 <a href="http://www.twitter.com" class="twitter"></a>
@@ -686,7 +1335,7 @@
                         <div class="company-employee-info block">
                             <div class="company-employee-info-social">
                                 <div class="employee-photo">
-                                    <img src="~/images/content/text.png" alt="" />
+                                    <img src="images/content/text.png" alt="" />
                                 </div>
                                 <a href="http://www.facebook.com" class="facebook"></a>
                                 <a href="http://www.twitter.com" class="twitter"></a>
@@ -707,7 +1356,7 @@
                         <div class="company-employee-info block last">
                             <div class="company-employee-info-social">
                                 <div class="employee-photo">
-                                    <img src="~/images/content/coins.png" alt="" />
+                                    <img src="images/content/coins.png" alt="" />
                                 </div>
                                 <a href="http://www.facebook.com" class="facebook"></a>
                                 <a href="http://www.twitter.com" class="twitter"></a>
@@ -838,145 +1487,7 @@
                     <div class="company-content-container container-16">
 
                         <div class="products block">
-                            <div class="page-selector top">
-                                <div class="pager-lable">Page:</div>
-                                <select tabindex="1">
-                                    <option value="1">1</option>
-                                    <option value="2">2</option>
-                                    <option value="3">3</option>
-                                    <option value="4">4</option>
-                                    <option value="5">5</option>
-                                </select>
-                            </div>
-                            <div class="block-title-2">
-                                <h3>Chosen Category Name</h3>
-                            </div>
-                            <table>
-                                <tr>
-                                    <td>
-                                        <img src="~/images/iphone.jpg" class="product-image" alt="" />
-                                        <div class="product-name text-colorful">Product Name</div>
-                                        <div class="rating-stars rated">
-                                            <div class="star star-1"></div>
-                                            <div class="star star-2"></div>
-                                            <div class="star star-3"></div>
-                                            <div class="star star-4 current"></div>
-                                            <div class="star star-5"></div>
-                                        </div>
-                                        <a class="view-details button-2-colorful" href="#">View Details</a>
-                                    </td>
-                                    <td>
-                                        <img src="~/images/iphone.jpg" class="product-image" alt="" />
-                                        <div class="product-name text-colorful">Product Name</div>
-                                        <div class="rating-stars rated">
-                                            <div class="star star-1"></div>
-                                            <div class="star star-2"></div>
-                                            <div class="star star-3"></div>
-                                            <div class="star star-4 current"></div>
-                                            <div class="star star-5"></div>
-                                        </div>
-                                        <a class="view-details button-2-colorful" href="#">View Details</a>
-                                    </td>
-                                    <td>
-                                        <img src="~/images/iphone.jpg" class="product-image" alt="" />
-                                        <div class="product-name text-colorful">Product Name</div>
-                                        <div class="rating-stars rated">
-                                            <div class="star star-1"></div>
-                                            <div class="star star-2"></div>
-                                            <div class="star star-3"></div>
-                                            <div class="star star-4 current"></div>
-                                            <div class="star star-5"></div>
-                                        </div>
-                                        <a class="view-details button-2-colorful" href="#">View Details</a>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>
-                                        <img src="~/images/iphone.jpg" class="product-image" alt="" />
-                                        <div class="product-name text-colorful">Product Name</div>
-                                        <div class="rating-stars rated">
-                                            <div class="star star-1"></div>
-                                            <div class="star star-2"></div>
-                                            <div class="star star-3"></div>
-                                            <div class="star star-4 current"></div>
-                                            <div class="star star-5"></div>
-                                        </div>
-                                        <a class="view-details button-2-colorful" href="#">View Details</a>
-                                    </td>
-                                    <td>
-                                        <img src="~/images/iphone.jpg" class="product-image" alt="" />
-                                        <div class="product-name text-colorful">Product Name</div>
-                                        <div class="rating-stars rated">
-                                            <div class="star star-1"></div>
-                                            <div class="star star-2"></div>
-                                            <div class="star star-3"></div>
-                                            <div class="star star-4 current"></div>
-                                            <div class="star star-5"></div>
-                                        </div>
-                                        <a class="view-details button-2-colorful" href="#">View Details</a>
-                                    </td>
-                                    <td>
-                                        <img src="~/images/iphone.jpg" class="product-image" alt="" />
-                                        <div class="product-name text-colorful">Product Name</div>
-                                        <div class="rating-stars rated">
-                                            <div class="star star-1"></div>
-                                            <div class="star star-2"></div>
-                                            <div class="star star-3"></div>
-                                            <div class="star star-4 current"></div>
-                                            <div class="star star-5"></div>
-                                        </div>
-                                        <a class="view-details button-2-colorful" href="#">View Details</a>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>
-                                        <img src="~/images/iphone.jpg" class="product-image" alt="" />
-                                        <div class="product-name text-colorful">Product Name</div>
-                                        <div class="rating-stars rated">
-                                            <div class="star star-1"></div>
-                                            <div class="star star-2"></div>
-                                            <div class="star star-3"></div>
-                                            <div class="star star-4 current"></div>
-                                            <div class="star star-5"></div>
-                                        </div>
-                                        <a class="view-details button-2-colorful" href="#">View Details</a>
-                                    </td>
-                                    <td>
-                                        <img src="~/images/iphone.jpg" class="product-image" alt="" />
-                                        <div class="product-name text-colorful">Product Name</div>
-                                        <div class="rating-stars rated">
-                                            <div class="star star-1"></div>
-                                            <div class="star star-2"></div>
-                                            <div class="star star-3"></div>
-                                            <div class="star star-4 current"></div>
-                                            <div class="star star-5"></div>
-                                        </div>
-                                        <a class="view-details button-2-colorful" href="#">View Details</a>
-                                    </td>
-                                    <td>
-                                        <img src="~/images/iphone.jpg" class="product-image" alt="" />
-                                        <div class="product-name text-colorful">Product Name</div>
-                                        <div class="rating-stars rated">
-                                            <div class="star star-1"></div>
-                                            <div class="star star-2"></div>
-                                            <div class="star star-3"></div>
-                                            <div class="star star-4 current"></div>
-                                            <div class="star star-5"></div>
-                                        </div>
-                                        <a class="view-details button-2-colorful" href="#">View Details</a>
-                                    </td>
-                                </tr>
-                            </table>
-                            <div class="page-selector top">
-                                <div class="pager-lable">Page:</div>
-                                <select tabindex="1">
-                                    <option value="1">1</option>
-                                    <option value="2">2</option>
-                                    <option value="3">3</option>
-                                    <option value="4">4</option>
-                                    <option value="5">5</option>
-                                </select>
-                            </div>
+
                         </div>
 
                     </div><!-- end of .company-content-container -->
@@ -990,7 +1501,7 @@
                         <div class="company-blog block">
                             <div class="blog-post-preview">
                                 <div class="blog-post-image">
-                                    <img src="~/images/content/sunglasses.jpg" alt="" />
+                                    <img src="images/content/sunglasses.jpg" alt="" />
                                 </div>
                                 <div class="blog-post-description clearfix">
                                     <div class="blog-post-title-comments">
@@ -1239,52 +1750,13 @@
                 </div>
 
             </div><!-- end of .company-inner-container -->
-        </div>
-    </div>
+
+        </div><!-- end of .zone-company-content -->
     </div><!-- end of .company-content-wrapper -->
-<script>
-    $(function () {
-    $("#create").change(function () {
-
-            var div_create = $("#div_create");
-            var div_list = $("#div_list");
-            div_create.show();
-            div_list.hide();
-        });
-    });
-</script>
-<script>
-
-        //angular.module('myApp');
-
-        function CategoryController($scope, $http) {
-
-            $scope.categories = [];
-            $scope.users = [];
-
-            var onUserRequest = function (data) {
-                $scope.users = data;
-            };
-
-            var onCategoryRequest = function (data) {
-                $scope.categories = data;
-            };
-
-            $scope.getCategories = function () {
-                $http.post("@Url.Action("GetCompanyCategory", "Category")").success(onCategoryRequest);
-            };
-            
-
-            $scope.getUsers = function () {
-                $http.post("@Url.Action("GetUserList", "Category")").success(onUserRequest);
-            };
-
-            $scope.getUsers();
-            $scope.getCategories();
-
-        }
-        
-</script>
+</div>
+    <script src="~/Scripts/angular.js"></script>
 
 
 
+    @*<script src="~/Content/AngulaJS/UserController.js"></script>*@
+    <script src="~/Content/AngulaJS/CategoryController.js"></script>

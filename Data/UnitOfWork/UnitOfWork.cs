@@ -37,7 +37,15 @@ namespace Web.Directory.Repository
             private IGenericRepository<Category> categoryRepository;
             private IGenericRepository<ProductCategory> productCategoryRepository;
             private IGenericRepository<AspNetUser> aspNetUserRepository;
-        
+            private IGenericRepository<CompaniesCategory> companiesCategoryRepository;
+
+            public IGenericRepository<CompaniesCategory> CompaniesCategoryRepository
+            {
+                get
+                {
+                    return this.companiesCategoryRepository ?? (this.companiesCategoryRepository = new GenericRepository<CompaniesCategory>(_context));
+                }
+            }
             public IGenericRepository<CompanyType> CompanyTypeRepository
             {
                 get

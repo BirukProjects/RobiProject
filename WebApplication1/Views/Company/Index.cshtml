@@ -1,6 +1,4 @@
-﻿@model IEnumerable<Data.Models.Company>
-
-@{
+﻿@{
     ViewBag.Title = "Companies";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
@@ -8,153 +6,123 @@
 
 
 <p>
-    @Html.ActionLink("Create New", "Create")
+    @*@Html.ActionLink("Create New", "Index1" , new{@class="btn btn-default"})*@
+    <a class="btn button-2-colorful" href="@Url.Action("Index1", "Company")">Create New</a>
 </p>
-<div class="row">
-    <div class="col-lg-12">
-        <div class="panel panel-default">
-            <div class="panel-heading">
-               Companies List 
-            </div>
-            <!-- /.panel-heading -->
-            <div class="panel-body">
-                <div class="table-responsive">
 
-                    <table class="table table-hover" id="CompnaiesTables-data">
-                        <tr>
-                            <th>
-                                @Html.Label("Name")
-                            </th>
-                            <th>
-                                @Html.Label("Website")
-                            </th>
-                            <th>
-                                @Html.Label("Email")
-                            </th>
-                            @*<th>
-                    @Html.DisplayNameFor(model => model.CompanyEmail2)
-                </th>*@
-                            <th>
-                                @Html.Label("Telephone")
-                            </th>
-                            <th>
-                                @Html.Label("Type")
-                            </th>
-                            @*<th>
-                    @Html.DisplayNameFor(model => model.UserOwnerId)
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.UserCreatorId)
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.CompanyLogoPath)
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.CreationDate)
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.LastUpdateDate)
-                </th>*@
-                            <th>
-                                @Html.Label("Founded Date")
-                            </th>
-                            <th>
-                                @Html.Label("turn over")
-                            </th>
-                            <th>
-                                @Html.Label("NO of Employees")
-                            </th>
-                            <th></th>
-                        </tr>
+<div data-ng-app="app" id="ng-app" lang="sv">
 
-                        @foreach (var item in Model)
-                        {
-                            <tr>
-                                <td>
-                                    @Html.DisplayFor(modelItem => item.CompanyName)
-                                </td>
-                                <td>
-                                    @Html.DisplayFor(modelItem => item.CompanyWebsite)
-                                </td>
-                                <td>
-                                    @Html.DisplayFor(modelItem => item.CompanyEmail1)
-                                </td>
-                                @*<td>
-                        @Html.DisplayFor(modelItem => item.CompanyEmail2)
-                    </td>*@
-                                <td>
-                                    @Html.DisplayFor(modelItem => item.CompanyTelephone)
-                                </td>
-                                <td>
-                                    @Html.DisplayFor(modelItem => item.CompanyType.CompanyTypeName)
-                                </td>
-                                @*<td>
-                        @Html.DisplayFor(modelItem => item.User.UserEmail)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.User1.UserEmail)
-                    </td>*@
-                                @*<td>
-                        @Html.DisplayFor(modelItem => item.CompanyLogoPath)
-                    </td>*@
-                                @*<td>
-                        @Html.DisplayFor(modelItem => item.CreationDate)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.LastUpdateDate)
-                    </td>*@
-                                <td>
-                                    @Html.DisplayFor(modelItem => item.CompanyFoundedDate)
-                                </td>
-                                <td>
-                                    @Html.DisplayFor(modelItem => item.turnover)
-                                </td>
-                                <td>
-                                    @Html.DisplayFor(modelItem => item.numberOfEmployees)
-                                </td>
-                                <td>
-                                    @Html.ActionLink("Edit", "Edit", new { id = item.CompanyId }) |
-                                    @Html.ActionLink("Details", "Details", new { id = item.CompanyId }) |
-                                   @* @Html.ActionLink("Delete", "Delete", new { id = item.CompanyId })*@
-                                </td>
-                            </tr>
-                        }
 
-                    </table>
+    <div data-ng-controller="CompanyController">
+
+        <div class="row">
+            <div class="col-lg-24">
+                <div class="panel panel-default">
+
+                    <div class="panel-heading">
+                        Companies List
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-3">
+                            <div class="sidebar-search block ">
+                                <form id="sidebar-search" class="ng-pristine ng-valid">
+                                    <input type="text" class="sidebar-search-input ng-pristine ng-valid" data-ng-model="search.companyName" placeholder="Search...">
+                                    <input type="submit" class="sidebar-search-submit" name="submit" value="">
+
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="panel-body">
+                        <div class="table-responsive">
+
+                            <table class="table table-hover" id="CompnaiesTables-data">
+                                <tr>
+                                    <th>
+                                        @Html.Label("Name")
+                                    </th>
+                                    <th>
+                                        @Html.Label("Website")
+                                    </th>
+                                    <th>
+                                        @Html.Label("Email")
+                                    </th>
+
+                                    <th>
+                                        @Html.Label("Telephone")
+                                    </th>
+                                    <th>
+                                        @Html.Label("Type")
+                                    </th>
+
+                                    <th>
+                                        @Html.Label("Founded Date")
+                                    </th>
+                                    <th>
+                                        @Html.Label("turn over")
+                                    </th>
+                                    <th>
+                                        @Html.Label("NO of Employees")
+                                    </th>
+                                    <th></th>
+                                </tr>
+
+
+                                <tr data-ng-repeat="Company in Companies | filter:search">
+                                    <td>
+                                        {{ Company.companyName}}
+                                    </td>
+                                    <td>
+                                        {{ Company.companyWebsite}}
+                                    </td>
+                                    <td>
+                                        {{ Company.companyEmail1}}
+                                    </td>
+
+                                    <td>
+                                        {{ Company.companyTelephone}}
+                                    </td>
+                                    <td>
+                                        {{ Company.companyType.CompanyTypeName}}
+                                    </td>
+                                    <td>
+                                        {{ Company.companyFoundedDate}}
+                                    </td>
+                                    <td>
+                                        {{ Company.turnover}}
+                                    </td>
+                                    <td>
+                                        {{ Company.numberOfEmployees}}
+                                    </td>
+                                    <td>
+                                        @Html.ActionLink("Edit", "Edit", 1) |
+                                        @Html.ActionLink("Details", "Details", 1) |
+                                        @* @Html.ActionLink("Delete", "Delete", new { id = item.CompanyId })*@
+                                    </td>
+                                </tr>
+
+
+                            </table>
+                        </div>
+
+                    </div>
+                    <!-- /.panel -->
                 </div>
-
+                <!-- /.col-lg-12 -->
             </div>
-            <!-- /.panel -->
         </div>
-        <!-- /.col-lg-12 -->
     </div>
-    </div>
-<script src="~/scripts/jquery-2.1.1.js"></script>
+</div>
+<script src="~/Scripts/angular.js"></script>
+
+<script src="~/scripts/angular-animate.js"></script>
+<script src="~/scripts/toastr.js"></script>
+<script src="~/scripts/ng-flow-standalone.js"></script>
+<script src="~/Content/AngulaJS/checklist-model.js"></script>
+<script src="~/Content/AngulaJS/CompanyController.js"></script>
+@*<script src="~/scripts/jquery-2.1.1.js"></script>
 <script src="~/scripts/jquery.js"></script>
 <script src="~/scripts/bootstrap.min.js"></script>
 <script src="~/scripts/dataTables.bootstrap.js"></script>
 <script src="~/scripts/sb-admin-2.js"></script>
-<script src="~/scripts/jquery.dataTables.js"></script>
-<script>
-    $(document).ready(function () {
-        $('#CompnaiesTables-data').dataTable();
-    });
-    function CompanyController($scope, $http) {
-
-        $scope.companies = [];
-
-
-        var onCompanyRequest = function (data) {
-            $scope.categories = data;
-        };
-
-        $scope.getCompanies = function () {
-            $http.post("@Url.Action("GetCompany", "company")").success(onCompanyRequest);
-        };
-
-
-
-        $scope.getCompanies();
-
-    }
-</script>
+<script src="~/scripts/jquery.dataTables.js"></script>*@

@@ -73,6 +73,10 @@ namespace WebDirectory.Data.Repository
             return _context.Set<T>().Find(id);
         }
 
+        public virtual T FindById(string  id)
+        {
+            return _context.Set<T>().Find(id);
+        }
         public virtual IEnumerable<T> Get(
           Expression<Func<T, bool>> filter = null,
           Func<IQueryable<T>, IOrderedQueryable<T>> orderBy = null,

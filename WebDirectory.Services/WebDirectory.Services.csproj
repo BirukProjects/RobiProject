@@ -48,6 +48,7 @@
     <Compile Include="AspNetUserService.cs" />
     <Compile Include="CategoryAreaService.cs" />
     <Compile Include="CategoryService.cs" />
+    <Compile Include="CompaniesCategoryService.cs" />
     <Compile Include="CompanyCategoryService.cs" />
     <Compile Include="CompanyMemberService.cs" />
     <Compile Include="CompanyProductServiceService.cs" />
@@ -57,6 +58,7 @@
     <Compile Include="IAspNetUserService.cs" />
     <Compile Include="ICategoryAreaService.cs" />
     <Compile Include="ICategoryService.cs" />
+    <Compile Include="ICompaniesCategoryService.cs" />
     <Compile Include="ICompanyCategoryService .cs" />
     <Compile Include="ICompanyMemberService.cs" />
     <Compile Include="ICompanyPortfolioService.cs" />

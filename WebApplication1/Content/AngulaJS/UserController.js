@@ -1,6 +1,6 @@
 ﻿
 var app = angular.module('app', []);
-var url = 'api/User/';
+var url = '/api/User/';
 app.factory('userFactory', function ($http) {
     return {
         getUser: function () {
@@ -10,10 +10,10 @@ app.factory('userFactory', function ($http) {
             return $http.post(url, user);
         },
         deleteUser: function (user) {
-            return $http.delete(url + user.UserId);
+            return $http.delete(url + user.id);
         },
         updateUser: function (user) {
-            return $http.put(url + user.Id, user);
+            return $http.put(url + user.id, user);
         }
     };
 });
@@ -67,7 +67,7 @@ app.controller('UserController', ['$scope', 'userFactory', function ($scope, use
         userFactory.deleteUser(currentUser).success(function (data) {
             alert("Deleted Successfully!!");
             $.each($scope.users, function (i) {
-                if ($scope.users[i].UserId === currentUser.UserId) {
+                if ($scope.users[i].id === currentUser.id) {
                     $scope.users.splice(i, 1);
                     return false;
                 }
@@ -83,10 +83,11 @@ app.controller('UserController', ['$scope', 'userFactory', function ($scope, use
     //get all user- Self Calling -On load
     userFactory.getUser().success(function (data) {
         $scope.users = data;
+       
         $scope.loading = false;
     })
     .error(function (data) {
-        $scope.error = "An Error has occurred while loading posts! " + data.ExceptionMessage;
+        $scope.error = "An Error has occurred while loading Users! " + data.ExceptionMessage;
         $scope.loading = false;
     });
 
